@@ -1,56 +1,53 @@
-$black: #2E2F30;
-$white: #FFF;
-$cyan: #00FFFF;
-$magenta: #FF00FF;
-$yellow: #FFFF00;
+// COLORS
+$black-0: #303239;
+$black-1: #555964;
+$black-2: #868A97;
+$black-3: #AAADBA;
+$black-4: #D5D8E3;
+$purple: #5A5AE6;
+$red: #FF4444;
+$yellow: #FFF29E;
+
+// UNITS
+$unit: 1vw;
 
 * {
   margin: 0;
   padding: 0;
   color: inherit;
   text-decoration: none;
+  list-style: none;
+  outline: none;
 }
 
 body {
-  background: $black url(../img/pattern.svg) no-repeat 0 0;
-  background-size: cover;
-  animation: trip 5s linear infinite;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background: $black-0;
+}
+
+.stripes {
   display: flex;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-}
+  flex-direction: column;
+  padding: $unit * 4;
 
-p {
-  a {
-    color: $white;
-    font-size: 10vw;
-    font-weight: 900;
-    text-transform: uppercase;
-    text-shadow: 1vw 1vw 0 $cyan, 2vw 2vw 0 $magenta, 3vw 3vw 0 $yellow;
-    transition: text-shadow .1s linear, transform .1s linear;
-    transform: translateX(-1.5vw) translateY(-1.5vw);
-    display: block;
-    padding: 10vw;
-    &:hover {
-      text-shadow: 3vw 3vw 0 $cyan, 6vw 6vw 0 $magenta, 9vw 9vw 0 $yellow;
-      transform: translateX(-3vw) translateY(-3vw);
+  li {
+    flex-grow: 1;
+    margin-bottom: $unit * 2;
+    transform: skewX(22.5deg);
+
+    &:nth-child(1) {
+      height: $unit * 3;
+      background: $purple;
     }
-  }
-}
 
-@keyframes trip {
-  96%, 96.99% {
-    background-color: $black;
-  }
-  97%, 97.99% {
-    background-color: $cyan;
-  }
-  98%, 98.99% {
-    background-color: $magenta;
-  }
-  99%, 100% {
-    background-color: $yellow;
+    &:nth-child(2) {
+      height: $unit * 2;
+      background: $red;
+    }
+
+    &:nth-child(3) {
+      height: $unit;
+      background: $yellow;
+    }
   }
 }
