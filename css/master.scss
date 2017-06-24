@@ -185,6 +185,9 @@ ul {
   font-style: italic;
   font-family: "Open Sans", sans-serif;
   display: flex;
+
+  // flex-grow: 1;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: flex-end;
   transform: rotate(-9deg);
@@ -192,7 +195,6 @@ ul {
   padding-right: $unit * 0.75;
 
   li {
-    margin-left: $unit;
     display: flex;
     align-items: center;
 
@@ -244,6 +246,8 @@ ul {
     }
 
     &:not(:first-child) {
+      margin-left: $unit;
+
       a {
         transform: rotate(9deg);
         transition: transform 0.125s cubic-bezier(0.5, 0, 0.25, 2);
@@ -375,10 +379,21 @@ ul {
         &:after {
           display: none;
         }
+
+        a {
+          margin-left: $unit;
+        }
       }
 
       &:not(:first-child) {
         transform: translateX(-$unit * 2);
+        padding-left: $unit * 2;
+
+        // font-size: $unit * 6;
+        // line-height: $unit * 7.5;
+
+        // width: $unit * 10;
+
       }
     }
   }
