@@ -4,26 +4,242 @@
   color: inherit;
   text-decoration: none;
   list-style: none;
-  outline: none; }
+  outline: none;
+  box-sizing: border-box; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  background: #303239; }
-
-.stripes {
+  height: 100vh;
+  text-transform: uppercase;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-image: radial-gradient(#fff29e, #ff4444, #5a5ae6);
+  background-size: 200% 200%;
+  background-position: 0 0;
+  animation: border 5s linear infinite;
+  border: 2.5vw solid #303239; }
+  body:after {
+    content: "";
+    background: #303239;
+    position: absolute;
+    top: 0.5vw;
+    right: 0.5vw;
+    bottom: 0.5vw;
+    left: 0.5vw; }
+
+div {
+  display: flex;
+  flex-grow: 0;
   flex-direction: column;
-  padding: 4vw; }
-  .stripes li {
-    flex-grow: 1;
-    margin-bottom: 2vw;
-    transform: skewX(22.5deg); }
-    .stripes li:nth-child(1) {
-      height: 3vw;
-      background: #5a5ae6; }
-    .stripes li:nth-child(2) {
-      height: 2vw;
-      background: #ff4444; }
-    .stripes li:nth-child(3) {
-      height: 1vw;
-      background: #fff29e; }
+  padding-bottom: 1.5vw;
+  position: relative;
+  z-index: 10; }
+
+h1 {
+  font-size: 4vw;
+  line-height: 5vw;
+  color: #d5d8e3;
+  font-weight: 700;
+  font-style: italic;
+  font-family: "Open Sans", sans-serif;
+  padding-left: 1.35vw;
+  transform: rotate(-9deg);
+  letter-spacing: 0.25vw;
+  animation: fade 2s ease-out -.65s; }
+  h1 span {
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    animation: fade 2s ease-out -1.5s; }
+
+h2 {
+  font-size: 12vw;
+  line-height: 12vw;
+  font-weight: 800;
+  font-style: italic;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  transform: rotate(-9deg); }
+  h2 a {
+    height: 12vw;
+    display: block;
+    position: relative; }
+    h2 a span {
+      overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.5, 0, 0.25, 1.25);
+      display: block;
+      padding-right: 1vw; }
+      h2 a span em {
+        display: block; }
+      h2 a span:nth-child(1) {
+        color: #5a5ae6;
+        height: 3.5vw;
+        animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.3) -1s 1; }
+      h2 a span:nth-child(2) {
+        color: #ff4444;
+        top: 4.5vw;
+        height: 3.75vw;
+        position: absolute;
+        left: 0;
+        right: 0;
+        animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.2) -0.9s 1; }
+        h2 a span:nth-child(2) em {
+          margin-top: -4.5vw; }
+      h2 a span:nth-child(3) {
+        color: #fff29e;
+        top: 9.25vw;
+        height: 2.75vw;
+        position: absolute;
+        left: 0;
+        right: 0;
+        animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.1) -0.8s 1; }
+        h2 a span:nth-child(3) em {
+          margin-top: -9.25vw; }
+    h2 a:hover span {
+      transition: transform 0.125s cubic-bezier(0.5, 0, 0.25, 2.5); }
+      h2 a:hover span:nth-child(1) {
+        transform: translateX(1vw); }
+      h2 a:hover span:nth-child(3) {
+        transform: translateX(-1vw); }
+
+ul {
+  font-size: 2vw;
+  line-height: 4vw;
+  color: #aaadba;
+  font-weight: 700;
+  font-style: italic;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: flex-end;
+  transform: rotate(-9deg);
+  animation: fade 1.5s ease-out 0s;
+  padding-right: 0.75vw; }
+  ul li {
+    margin-left: 1vw;
+    display: flex;
+    align-items: center; }
+    ul li:nth-child(1) {
+      animation: fade 1.5s ease-out .1s;
+      letter-spacing: 0.125vw; }
+      ul li:nth-child(1):after {
+        content: "";
+        margin-left: 1vw;
+        width: 0.5vw;
+        height: 0.5vw;
+        border-radius: 50%;
+        background-color: #868a97; }
+      ul li:nth-child(1) a {
+        margin-left: 0.5vw; }
+        ul li:nth-child(1) a:hover, ul li:nth-child(1) a:focus {
+          color: white; }
+    ul li:nth-child(2) {
+      animation: fade 1.5s ease-out .2s; }
+    ul li:nth-child(3) {
+      animation: fade 1.5s ease-out .3s; }
+    ul li:nth-child(4) {
+      animation: fade 1.5s ease-out .4s; }
+    ul li:nth-child(5) {
+      animation: fade 1.5s ease-out .5s; }
+      ul li:nth-child(5) a {
+        animation: hi 3s linear -.5s 1; }
+    ul li a {
+      color: #d5d8e3; }
+    ul li:not(:first-child) a {
+      transform: rotate(9deg);
+      transition: transform 0.125s cubic-bezier(0.5, 0, 0.25, 2);
+      font-style: normal; }
+      ul li:not(:first-child) a:hover, ul li:not(:first-child) a:focus {
+        transform: scale(1.25) rotate(9deg); }
+
+.again {
+  position: absolute;
+  z-index: 20;
+  font-weight: 700;
+  font-style: italic;
+  font-family: "Open Sans", sans-serif;
+  color: #555964;
+  bottom: 4vw;
+  right: 5vw;
+  cursor: pointer;
+  font-size: 2vw;
+  line-height: 3vw; }
+  .again:hover {
+    color: #868a97; }
+  .again:active {
+    color: #aaadba; }
+
+@keyframes intro {
+  0%, 75% {
+    transform: translateX(-100vw); }
+
+  100% {
+    transform: translateX(0); } }
+@keyframes fade {
+  0%, 75% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+@keyframes reveal {
+  0%, 50% {
+    opacity: 0;
+    width: 0; }
+
+  100% {
+    opacity: 1;
+    width: 100%; } }
+@keyframes border {
+  0% {
+    background-position: 0 0; }
+
+  20% {
+    background-position: 100% 0; }
+
+  40% {
+    background-position: 100% 100%; }
+
+  60% {
+    background-position: 0 100%; }
+
+  100% {
+    background-position: 0 0; } }
+@keyframes hi {
+  0%, 80% {
+    transform: rotate(9deg) translate(0, 0); }
+
+  85% {
+    transform: rotate(24deg) translate(0.5vw, -0.25vw); }
+
+  90% {
+    transform: rotate(9deg) translate(0, 0); }
+
+  95% {
+    transform: rotate(24deg) translate(0.5vw, -0.25vw); }
+
+  100% {
+    transform: rotate(9deg) translate(0, 0); } }
+@media only screen and (max-width: 800px) {
+  h1 {
+    font-size: 6vw;
+    line-height: 7.5vw; }
+
+  ul {
+    font-size: 4vw;
+    line-height: 6.5vw;
+    flex-wrap: wrap; }
+    ul li {
+      justify-content: flex-end; }
+      ul li:first-child {
+        width: 100%; }
+        ul li:first-child:after {
+          display: none; }
+      ul li:not(:first-child) {
+        font-size: 6vw;
+        line-height: 8vw; }
+        ul li:not(:first-child) a {
+          margin-left: 1vw; }
+
+  .again {
+    font-size: 3vw;
+    line-height: 4.5vw; } }
