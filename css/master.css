@@ -36,7 +36,6 @@ body {
 
 div {
   display: flex;
-  flex-grow: 0;
   flex-direction: column;
   padding-bottom: 1.5vw;
   position: relative;
@@ -50,9 +49,9 @@ h1 {
   font-style: italic;
   font-family: "Open Sans", sans-serif;
   padding-left: 1.35vw;
-  transform: rotate(-9deg);
   letter-spacing: 0.25vw;
-  animation: fade 2s ease-out -.65s; }
+  animation: fade 2s ease-out -.65s;
+  transform: rotate(-9deg); }
   h1 span {
     white-space: nowrap;
     display: block;
@@ -74,8 +73,7 @@ h2 {
     h2 a span {
       overflow: hidden;
       transition: transform 0.25s cubic-bezier(0.5, 0, 0.25, 1.25);
-      display: block;
-      padding-right: 1vw; }
+      display: block; }
       h2 a span em {
         display: block; }
       h2 a span:nth-child(1) {
@@ -117,12 +115,10 @@ ul {
   font-style: italic;
   font-family: "Open Sans", sans-serif;
   display: flex;
-  width: 100%;
   flex-wrap: wrap;
   justify-content: flex-end;
   transform: rotate(-9deg);
-  animation: fade 1.5s ease-out 0s;
-  padding-right: 0.75vw; }
+  animation: fade 1.5s ease-out 0s; }
   ul li {
     display: flex;
     align-items: center; }
@@ -218,13 +214,13 @@ ul {
     transform: rotate(9deg) translate(0, 0); }
 
   85% {
-    transform: rotate(24deg) translate(0.5vw, -0.25vw); }
+    transform: rotate(24deg) translate(0.33333vw, -0.25vw); }
 
   90% {
     transform: rotate(9deg) translate(0, 0); }
 
   95% {
-    transform: rotate(24deg) translate(0.5vw, -0.25vw); }
+    transform: rotate(24deg) translate(0.33333vw, -0.25vw); }
 
   100% {
     transform: rotate(9deg) translate(0, 0); } }
@@ -237,16 +233,18 @@ ul {
   ul {
     font-size: 4vw;
     line-height: 6.5vw; }
-    ul li {
-      justify-content: flex-end; }
-      ul li:first-child {
-        width: 100%; }
-        ul li:first-child:after {
-          display: none; }
-        ul li:first-child a {
-          margin-left: 1vw; }
-      ul li:not(:first-child) {
-        transform: translateX(-2vw); }
+    ul li:first-child {
+      width: 100%;
+      justify-content: flex-end;
+      transform: translateX(0.5vw); }
+      ul li:first-child:after {
+        display: none; }
+      ul li:first-child a {
+        margin-left: 1vw; }
+    ul li:not(:first-child) {
+      transform: translateX(-1.5vw); }
+      ul li:not(:first-child) a {
+        margin-left: 2vw; }
 
   .again {
     font-size: 4vw;

@@ -12,10 +12,6 @@ $yellow: #FFF29E;
 // UNITS
 $unit: 1vw;
 
-// FONT WEIGHTS
-// $bold: OpenSans-BoldItalic, sans;
-// $extraBold: OpenSans-ExtraboldItalic;
-
 * {
   margin: 0;
   padding: 0;
@@ -24,8 +20,6 @@ $unit: 1vw;
   list-style: none;
   outline: none;
   box-sizing: border-box;
-
-  // font-weight: inherit;
 }
 
 html {
@@ -33,8 +27,6 @@ html {
 }
 
 body {
-  // height: 100vh;
-  // height: 100%;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -44,9 +36,6 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-
-  // width: 100%;
-  // height: 100%;
   background-image: radial-gradient($yellow, $red, $purple);
   background-size: 200% 200%;
   background-position: 0 0;
@@ -66,7 +55,7 @@ body {
 
 div {
   display: flex;
-  flex-grow: 0;
+  // flex-grow: 0;
   flex-direction: column;
   padding-bottom: $unit * 1.5;
   position: relative;
@@ -81,9 +70,9 @@ h1 {
   font-style: italic;
   font-family: "Open Sans", sans-serif;
   padding-left: $unit * 1.35;
-  transform: rotate(-9deg);
   letter-spacing: $unit / 4;
   animation: fade 2s ease-out -.65s;
+  transform: rotate(-9deg);
 
   span {
     white-space: nowrap;
@@ -102,8 +91,6 @@ h2 {
   text-align: center;
   transform: rotate(-9deg);
 
-  // letter-spacing: -$unit * 1.25;
-
   a {
     height: $unit * 12;
     display: block;
@@ -113,7 +100,6 @@ h2 {
       overflow: hidden;
       transition: transform 0.25s cubic-bezier(0.5, 0, 0.25, 1.25);
       display: block;
-      padding-right: $unit;
 
       em {
         display: block;
@@ -123,9 +109,6 @@ h2 {
         color: $purple;
         height: $unit * 3.5;
         animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.3) -1s 1;
-
-        // text-shadow: $unit 0 0 $purple;
-
       }
 
       &:nth-child(2) {
@@ -136,9 +119,6 @@ h2 {
         left: 0;
         right: 0;
         animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.2) -0.9s 1;
-
-        // text-shadow: $unit 0 0 $red;
-
         em {
           margin-top: -$unit * 4.5;
         }
@@ -152,9 +132,6 @@ h2 {
         left: 0;
         right: 0;
         animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.1) -0.8s 1;
-
-        // text-shadow: $unit 0px 1px $yellow;
-
         em {
           margin-top: -$unit * 9.25;
         }
@@ -185,14 +162,10 @@ ul {
   font-style: italic;
   font-family: "Open Sans", sans-serif;
   display: flex;
-
-  // flex-grow: 1;
-  width: 100%;
   flex-wrap: wrap;
   justify-content: flex-end;
   transform: rotate(-9deg);
   animation: fade 1.5s ease-out 0s;
-  padding-right: $unit * 0.75;
 
   li {
     display: flex;
@@ -344,7 +317,7 @@ ul {
   }
 
   85% {
-    transform: rotate(24deg) translate($unit / 2, -$unit / 4);
+    transform: rotate(24deg) translate($unit / 3, -$unit / 4);
   }
 
   90% {
@@ -352,7 +325,7 @@ ul {
   }
 
   95% {
-    transform: rotate(24deg) translate($unit / 2, -$unit / 4);
+    transform: rotate(24deg) translate($unit / 3, -$unit / 4);
   }
 
   100% {
@@ -370,9 +343,11 @@ ul {
     font-size: $unit * 4;
     line-height: $unit * 6.5;
     li {
-      justify-content: flex-end;
+
       &:first-child {
         width: 100%;
+        justify-content: flex-end;
+        transform: translateX($unit/2);
         &:after {
           display: none;
         }
@@ -381,7 +356,10 @@ ul {
         }
       }
       &:not(:first-child) {
-        transform: translateX(-$unit * 2);
+        transform: translateX(-$unit*1.5);
+        a {
+          margin-left: $unit*2;
+        }
       }
     }
   }
@@ -390,4 +368,14 @@ ul {
     font-size: $unit * 4;
     line-height: $unit * 5;
   }
+}
+
+// DEBUGGING
+
+h1,
+h2,
+ul,
+ul li {
+  // transform: none;
+  // outline: 1px solid red;
 }
