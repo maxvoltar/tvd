@@ -364,11 +364,13 @@ ul {
   h1 {
     font-size: $unit * 6;
     line-height: $unit * 7.5;
+    // padding-left: $unit * 4;
   }
 
   ul {
     font-size: $unit * 4;
     line-height: $unit * 6.5;
+    // padding-right: $unit * 5;
 
     li {
       justify-content: flex-end;
@@ -387,12 +389,7 @@ ul {
 
       &:not(:first-child) {
         transform: translateX(-$unit * 2);
-        padding-left: $unit * 2;
-
-        // font-size: $unit * 6;
-        // line-height: $unit * 7.5;
-
-        // width: $unit * 10;
+        // padding-left: $unit * 2;
 
       }
     }

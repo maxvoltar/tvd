@@ -245,8 +245,7 @@ ul {
         ul li:first-child a {
           margin-left: 1vw; }
       ul li:not(:first-child) {
-        transform: translateX(-2vw);
-        padding-left: 2vw; }
+        transform: translateX(-2vw); }
 
   .again {
     font-size: 4vw;
