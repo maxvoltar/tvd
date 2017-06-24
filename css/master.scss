@@ -357,7 +357,7 @@ ul {
         }
       }
       &:not(:first-child) {
-        transform: translateX(-$unit*1.5);
+        transform: translateX(-$unit*1);
         a {
           margin-left: $unit*2;
         }

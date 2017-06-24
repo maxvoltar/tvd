@@ -243,7 +243,7 @@ ul {
       ul li:first-child a {
         margin-left: 1vw; }
     ul li:not(:first-child) {
-      transform: translateX(-1.5vw); }
+      transform: translateX(-1vw); }
       ul li:not(:first-child) a {
         margin-left: 2vw; }
 
