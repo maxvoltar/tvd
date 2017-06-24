@@ -226,7 +226,7 @@ ul {
 
   100% {
     transform: rotate(9deg) translate(0, 0); } }
-@media only screen and (max-width: 900px) {
+@media all and (max-width: 640pt) {
   h1 {
     font-size: 6vw;
     line-height: 7.5vw; }

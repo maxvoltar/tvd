@@ -356,7 +356,7 @@ ul {
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media all and (max-width: 640pt) {
   h1 {
     font-size: $unit * 6;
     line-height: $unit * 7.5;
