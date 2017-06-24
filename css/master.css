@@ -228,11 +228,12 @@ ul {
   h1 {
     font-size: 6vw;
     line-height: 7.5vw;
-    padding-left: 1vw; }
+    padding-left: 5.5vw; }
 
   ul {
     font-size: 4vw;
-    line-height: 6.5vw; }
+    line-height: 6.5vw;
+    padding-right: 4vw; }
     ul li:first-child {
       width: 100%;
       justify-content: flex-end;

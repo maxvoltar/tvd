@@ -337,11 +337,12 @@ ul {
   h1 {
     font-size: $unit * 6;
     line-height: $unit * 7.5;
-    padding-left: $unit;
+    padding-left: $unit*5.5;
   }
   ul {
     font-size: $unit * 4;
     line-height: $unit * 6.5;
+    padding-right: $unit*4;
     li {
 
       &:first-child {
