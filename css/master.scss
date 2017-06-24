@@ -364,33 +364,24 @@ ul {
   h1 {
     font-size: $unit * 6;
     line-height: $unit * 7.5;
-    // padding-left: $unit * 4;
+    padding-left: $unit;
   }
-
   ul {
     font-size: $unit * 4;
     line-height: $unit * 6.5;
-    // padding-right: $unit * 5;
-
     li {
       justify-content: flex-end;
-
       &:first-child {
         width: 100%;
-
         &:after {
           display: none;
         }
-
         a {
           margin-left: $unit;
         }
       }
-
       &:not(:first-child) {
         transform: translateX(-$unit * 2);
-        // padding-left: $unit * 2;
-
       }
     }
   }

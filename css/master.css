@@ -231,7 +231,8 @@ ul {
 @media all and (max-width: 640px) {
   h1 {
     font-size: 6vw;
-    line-height: 7.5vw; }
+    line-height: 7.5vw;
+    padding-left: 1vw; }
 
   ul {
     font-size: 4vw;
