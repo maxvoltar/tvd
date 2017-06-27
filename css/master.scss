@@ -1,13 +1,13 @@
 // COLORS
 $black-0: #303239;
 $black-1: #555964;
-$black-2: #868A97;
-$black-3: #AAADBA;
-$black-4: #D5D8E3;
+$black-2: #868a97;
+$black-3: #aaadba;
+$black-4: #d5d8e3;
 $white: #fff;
-$purple: #5A5AE6;
-$red: #FF4444;
-$yellow: #FFF29E;
+$purple: #5a5ae6;
+$red: #ff4444;
+$yellow: #fff29e;
 
 // UNITS
 $unit: 1vw;
@@ -258,7 +258,8 @@ ul {
 }
 
 @keyframes intro {
-  0%, 75% {
+  0%,
+  75% {
     transform: translateX(-$unit * 100);
   }
 
@@ -268,7 +269,8 @@ ul {
 }
 
 @keyframes fade {
-  0%, 75% {
+  0%,
+  75% {
     opacity: 0;
   }
 
@@ -278,7 +280,8 @@ ul {
 }
 
 @keyframes reveal {
-  0%, 50% {
+  0%,
+  50% {
     opacity: 0;
     width: 0;
   }
@@ -312,7 +315,8 @@ ul {
 }
 
 @keyframes hi {
-  0%, 80% {
+  0%,
+  80% {
     transform: rotate(9deg) translate(0, 0);
   }
 
@@ -344,7 +348,6 @@ ul {
     line-height: $unit * 6.5;
     padding-right: $unit*3.5;
     li {
-
       &:first-child {
         width: 100%;
         justify-content: flex-end;
