@@ -10,7 +10,11 @@
 }
 
 body {
-  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -31,7 +35,7 @@ ul {
 
 ul li {
   border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-  border: 32px solid #FFFF00;
+  border: 2vw solid #FFFF00;
   -webkit-box-shadow: 0 0 32px #00FFFF, 0 0 32px #FFFF00 inset;
           box-shadow: 0 0 32px #00FFFF, 0 0 32px #FFFF00 inset;
   position: absolute;
