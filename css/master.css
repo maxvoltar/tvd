@@ -33,54 +33,98 @@ ul {
   position: relative;
 }
 
-ul li {
-  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-  border: 2vw solid #FFFF00;
-  -webkit-box-shadow: 0 0 32px #00FFFF, 0 0 32px #FFFF00 inset;
-          box-shadow: 0 0 32px #00FFFF, 0 0 32px #FFFF00 inset;
+ul::after {
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  -webkit-animation: bubble 30s infinite linear;
-          animation: bubble 30s infinite linear;
+  background: radial-gradient(circle at bottom right, #222, #000);
+  border-radius: 50%;
+}
+
+ul li {
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  background-color: #FFFF00;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-animation: aura 30s infinite linear;
+          animation: aura 30s infinite linear;
   mix-blend-mode: screen;
+  -webkit-filter: blur(1vw);
+          filter: blur(1vw);
 }
 
 ul li:nth-child(2) {
-  border-color: #FF00FF;
-  -webkit-animation-delay: -20s;
-          animation-delay: -20s;
-  -webkit-box-shadow: 0 0 32px #FF00FF, 0 0 32px #FF00FF inset;
-          box-shadow: 0 0 32px #FF00FF, 0 0 32px #FF00FF inset;
+  background-color: #FF00FF;
+  -webkit-animation-delay: -10s;
+          animation-delay: -10s;
 }
 
 ul li:nth-child(3) {
-  border-color: #00FFFF;
-  -webkit-animation-delay: -10s;
-          animation-delay: -10s;
-  -webkit-box-shadow: 0 0 32px #FFFF00, 0 0 32px #00FFFF inset;
-          box-shadow: 0 0 32px #FFFF00, 0 0 32px #00FFFF inset;
+  background-color: #00FFFF;
+  animation-direction: reverse;
+  -webkit-animation-delay: -20s;
+          animation-delay: -20s;
 }
 
-@-webkit-keyframes bubble {
+@-webkit-keyframes aura {
+  25%,
+  75% {
+    border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
+  }
   50% {
-    border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
   }
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
+  }
+}
+
+@keyframes aura {
+  25%,
+  75% {
+    border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
+  }
+  50% {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes bubble {
+  25%,
+  75% {
+    border-radius: 45% 55% 45% 55% / 45% 45% 55% 55%;
+  }
+  50% {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
   }
 }
 
 @keyframes bubble {
+  25%,
+  75% {
+    border-radius: 45% 55% 45% 55% / 45% 45% 55% 55%;
+  }
   50% {
-    border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
   }
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
   }
 }
 /*# sourceMappingURL=master.css.map */
