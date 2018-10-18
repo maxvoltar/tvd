@@ -24,7 +24,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #000;
+  background-color: black;
 }
 
 ul {
@@ -40,13 +40,13 @@ ul::after {
   right: 0;
   bottom: 0;
   left: 0;
-  background: radial-gradient(circle at bottom right, #222, #000);
+  background: radial-gradient(circle at top left, #1a1a1a, black);
   border-radius: 50%;
 }
 
 ul li {
   border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-  background-color: #FFFF00;
+  background-color: yellow;
   position: absolute;
   top: 0;
   right: 0;
@@ -60,13 +60,13 @@ ul li {
 }
 
 ul li:nth-child(2) {
-  background-color: #FF00FF;
+  background-color: magenta;
   -webkit-animation-delay: -10s;
           animation-delay: -10s;
 }
 
 ul li:nth-child(3) {
-  background-color: #00FFFF;
+  background-color: cyan;
   animation-direction: reverse;
   -webkit-animation-delay: -20s;
           animation-delay: -20s;
@@ -78,7 +78,7 @@ ul li:nth-child(3) {
     border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
   }
   50% {
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    border-radius: 40% 60% 60% 40% / 40% 60% 40% 60%;
   }
   100% {
     -webkit-transform: rotate(360deg);
@@ -92,39 +92,11 @@ ul li:nth-child(3) {
     border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
   }
   50% {
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    border-radius: 40% 60% 60% 40% / 40% 60% 40% 60%;
   }
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes bubble {
-  25%,
-  75% {
-    border-radius: 45% 55% 45% 55% / 45% 45% 55% 55%;
-  }
-  50% {
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-  }
-  100% {
-    -webkit-transform: rotate(-360deg);
-            transform: rotate(-360deg);
-  }
-}
-
-@keyframes bubble {
-  25%,
-  75% {
-    border-radius: 45% 55% 45% 55% / 45% 45% 55% 55%;
-  }
-  50% {
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-  }
-  100% {
-    -webkit-transform: rotate(-360deg);
-            transform: rotate(-360deg);
   }
 }
 /*# sourceMappingURL=master.css.map */
