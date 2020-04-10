@@ -55,7 +55,6 @@ body {
 
 div {
   display: flex;
-  // flex-grow: 0;
   flex-direction: column;
   padding-bottom: $unit * 1.5;
   position: relative;
@@ -71,7 +70,7 @@ h1 {
   font-family: "Open Sans", sans-serif;
   padding-left: $unit * 1.35;
   letter-spacing: $unit / 4;
-  animation: fade 2s ease-out -.65s;
+  animation: fade 2s ease-out -0.65s;
   transform: rotate(-9deg);
 
   span {
@@ -119,6 +118,7 @@ h2 {
         left: 0;
         right: 0;
         animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.2) -0.9s 1;
+
         em {
           margin-top: -$unit * 4.5;
         }
@@ -132,6 +132,7 @@ h2 {
         left: 0;
         right: 0;
         animation: intro 1.5s cubic-bezier(0.5, 0, 0.25, 1.1) -0.8s 1;
+
         em {
           margin-top: -$unit * 9.25;
         }
@@ -172,7 +173,7 @@ ul {
     align-items: center;
 
     &:nth-child(1) {
-      animation: fade 1.5s ease-out .1s;
+      animation: fade 1.5s ease-out 0.1s;
       letter-spacing: $unit / 8;
 
       &:after {
@@ -195,22 +196,22 @@ ul {
     }
 
     &:nth-child(2) {
-      animation: fade 1.5s ease-out .2s;
+      animation: fade 1.5s ease-out 0.2s;
     }
 
     &:nth-child(3) {
-      animation: fade 1.5s ease-out .3s;
+      animation: fade 1.5s ease-out 0.3s;
     }
 
     &:nth-child(4) {
-      animation: fade 1.5s ease-out .4s;
+      animation: fade 1.5s ease-out 0.4s;
     }
 
     &:nth-child(5) {
-      animation: fade 1.5s ease-out .5s;
+      animation: fade 1.5s ease-out 0.5s;
 
       a {
-        animation: hi 3s linear -.5s 1;
+        animation: hi 3s linear -0.5s 1;
       }
     }
 
@@ -224,7 +225,6 @@ ul {
       a {
         transform: rotate(9deg);
         transition: transform 0.125s cubic-bezier(0.5, 0, 0.25, 2);
-        font-style: normal;
 
         &:hover,
         &:focus {
@@ -341,28 +341,34 @@ ul {
   h1 {
     font-size: $unit * 6;
     line-height: $unit * 7.5;
-    padding-left: $unit*5;
+    padding-left: $unit * 5;
   }
+
   ul {
     font-size: $unit * 4;
     line-height: $unit * 6.5;
-    padding-right: $unit*3.5;
+    padding-right: $unit * 3.5;
+
     li {
       &:first-child {
         width: 100%;
         justify-content: flex-end;
         transform: translateX($unit/2);
+
         &:after {
           display: none;
         }
+
         a {
           margin-left: $unit;
         }
       }
+
       &:not(:first-child) {
-        transform: translateX(-$unit*1);
+        transform: translateX(-$unit * 1);
+
         a {
-          margin-left: $unit*2;
+          margin-left: $unit * 2;
         }
       }
     }
