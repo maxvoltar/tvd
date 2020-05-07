@@ -221,6 +221,7 @@ ul {
 
     &:not(:first-child) {
       margin-left: $unit;
+      font-style: normal;
 
       a {
         transform: rotate(9deg);
