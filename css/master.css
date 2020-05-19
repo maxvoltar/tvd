@@ -4,14 +4,14 @@
   --c-cyan: cyan;
   --c-magenta: magenta;
   --c-yellow: yellow;
-  --c-white: white;
-  --c-black: black;
+  --c-white: #eee;
+  --c-black: #111;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --c-white: black;
-    --c-black: white;
+    --c-white: #111;
+    --c-black: #eee;
   }
 }
 
