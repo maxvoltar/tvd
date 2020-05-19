@@ -19,7 +19,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  /* outline: none; */
   font-size: 1em;
   line-height: 1.5em;
   font-weight: inherit;
@@ -48,8 +47,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-feature-settings: "liga" on;
+  -webkit-font-feature-settings: "liga" on;
   -moz-font-feature-settings: "liga" on;
+  font-feature-settings: "liga" on;
   font-family: Inter, sans-serif;
   font-size: 24px;
   color: var(--c-black);
@@ -76,7 +76,6 @@ h1 {
   height: 13.33em;
   position: relative;
   font-style: italic;
-  overflow: hidden;
   margin: 0 -1em;
 }
 
@@ -113,12 +112,14 @@ h1 span {
 h1 .p-given-name {
   font-size: 5.33em;
   color: var(--c-cyan);
+  text-shadow: 0 0 1em var(--c-cyan);
 }
 
 h1 .p-nickname {
   font-size: 2.66em;
   color: var(--c-magenta);
   margin-top: .25em;
+  text-shadow: 0 0 1em var(--c-magenta);
 }
 
 h1 .p-nickname::before {
@@ -133,6 +134,7 @@ h1 .p-family-name {
   font-size: 2.66em;
   color: var(--c-yellow);
   margin-top: .75em;
+  text-shadow: 0 0 1em var(--c-yellow);
 }
 
 .p-job-title {
@@ -147,12 +149,16 @@ h1 .p-family-name {
   background-color: var(--c-black);
   -webkit-mask-size: cover;
   -moz-mask-size: cover;
+  mask-size: cover;
   -webkit-mask-position: 0 0;
   -moz-mask-position: 0 0;
+  mask-position: 0 0;
   -webkit-mask-repeat: no-repeat;
   -moz-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   -webkit-mask-image: url(../img/link-background.svg);
   -moz-mask-image: url(../img/link-background.svg);
+  mask-image: url(../img/link-background.svg);
 }
 
 .p-job-title a:hover,
@@ -192,31 +198,38 @@ h1 .p-family-name {
   background-color: var(--c-black);
   -webkit-mask-size: 4em;
   -moz-mask-size: 4em;
+  mask-size: 4em;
   -webkit-mask-position: center top;
   -moz-mask-position: center top;
+  mask-position: center top;
   -webkit-mask-repeat: no-repeat;
   -moz-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   pointer-events: none;
 }
 
 .work li:nth-child(1)::after {
   -webkit-mask-image: url(../img/abstract.svg);
   -moz-mask-image: url(../img/abstract.svg);
+  mask-image: url(../img/abstract.svg);
 }
 
 .work li:nth-child(2)::after {
   -webkit-mask-image: url(../img/dropbox.svg);
   -moz-mask-image: url(../img/dropbox.svg);
+  mask-image: url(../img/dropbox.svg);
 }
 
 .work li:nth-child(3)::after {
   -webkit-mask-image: url(../img/instagram.svg);
   -moz-mask-image: url(../img/instagram.svg);
+  mask-image: url(../img/instagram.svg);
 }
 
 .work li:nth-child(4)::after {
   -webkit-mask-image: url(../img/gowalla.svg);
   -moz-mask-image: url(../img/gowalla.svg);
+  mask-image: url(../img/gowalla.svg);
 }
 
 .work a,
