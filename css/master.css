@@ -221,7 +221,7 @@ h1 .p-family-name {
 
 .work a,
 .work del {
-  padding-top: 4.66em;
+  padding-top: 4.33em;
   display: block;
 }
 
@@ -242,7 +242,7 @@ h1 .p-family-name {
 }
 
 .work del strong {
-  text-decoration: line-through;
+  font-weight: normal;
 }
 
 h2 {
