@@ -74,8 +74,8 @@ body {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5em, transparent), color-stop(0.5em, rgba(0, 0, 0, 0.75)), color-stop(1em, black)), -webkit-gradient(linear, left top, right top, from(var(--c-cyan)), color-stop(var(--c-magenta)), to(var(--c-yellow)));
-    background: linear-gradient(transparent 0.5em, rgba(0, 0, 0, 0.75) 0.5em, black 1em), linear-gradient(to right, var(--c-cyan), var(--c-magenta), var(--c-yellow));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5em, transparent), color-stop(0.5em, rgba(17, 17, 17, 0.85)), color-stop(1em, var(--c-white))), -webkit-gradient(linear, left top, right top, from(var(--c-cyan)), color-stop(var(--c-magenta)), to(var(--c-yellow)));
+    background: linear-gradient(transparent 0.5em, rgba(17, 17, 17, 0.85) 0.5em, var(--c-white) 1em), linear-gradient(to right, var(--c-cyan), var(--c-magenta), var(--c-yellow));
   }
 }
 

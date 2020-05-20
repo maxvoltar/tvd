@@ -74,7 +74,7 @@ body {
   background: linear-gradient(transparent .5em, rgba(255, 255, 255, 1) .5em), linear-gradient(to right, var(--c-cyan), var(--c-magenta), var(--c-yellow));
 
   @include dark-mode() {
-    background: linear-gradient(transparent .5em, rgba(0, 0, 0, .75) .5em, rgba(0, 0, 0, 1) 1em), linear-gradient(to right, var(--c-cyan), var(--c-magenta), var(--c-yellow));
+    background: linear-gradient(transparent .5em, transparentize(#111, .15) .5em, var(--c-white) 1em), linear-gradient(to right, var(--c-cyan), var(--c-magenta), var(--c-yellow));
   }
 
   @include mobile() {
