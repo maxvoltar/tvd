@@ -64,8 +64,8 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5em, transparent), color-stop(0.5em, var(--c-white))), -webkit-gradient(linear, left top, right top, color-stop(33.33%, cyan), color-stop(33.33%, magenta), color-stop(66.66%, magenta), color-stop(66.66%, yellow));
-  background: linear-gradient(transparent 0.5em, var(--c-white) 0.5em), linear-gradient(to right, cyan 33.33%, magenta 33.33%, magenta 66.66%, yellow 66.66%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5em, transparent), color-stop(0.5em, var(--c-white))), repeating-linear-gradient(-30deg, cyan 0, cyan 1em, var(--c-black) 1em, var(--c-black) 2em, magenta 2em, magenta 3em, var(--c-black) 3em, var(--c-black) 4em, yellow 4em, yellow 5em);
+  background: linear-gradient(transparent 0.5em, var(--c-white) 0.5em), repeating-linear-gradient(-30deg, cyan 0, cyan 1em, var(--c-black) 1em, var(--c-black) 2em, magenta 2em, magenta 3em, var(--c-black) 3em, var(--c-black) 4em, yellow 4em, yellow 5em);
 }
 
 @media (prefers-color-scheme: dark) {
