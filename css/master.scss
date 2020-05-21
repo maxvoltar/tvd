@@ -1,4 +1,6 @@
-@import url('https://rsms.me/inter/inter.css');
+$cyan: cyan;
+$magenta: magenta;
+$yellow: yellow;
 
 @mixin dark-mode {
   @media (prefers-color-scheme: dark) {
@@ -12,10 +14,9 @@
   }
 }
 
+@import url('https://rsms.me/inter/inter.css');
+
 :root {
-  --c-cyan: cyan;
-  --c-magenta: magenta;
-  --c-yellow: yellow;
   --c-white: #eee;
   --c-black: #111;
 }
@@ -71,10 +72,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(transparent .5em, rgba(255, 255, 255, 1) .5em), linear-gradient(to right, var(--c-cyan), var(--c-magenta), var(--c-yellow));
+  background: linear-gradient(transparent .5em, var(--c-white) .5em), linear-gradient(to right, $cyan 33.33%, $magenta 33.33%, $magenta 66.66%, $yellow 66.66%);
 
   @include dark-mode() {
-    background: linear-gradient(transparent .5em, transparentize(#111, .15) .5em, var(--c-white) 1em), linear-gradient(to right, var(--c-cyan), var(--c-magenta), var(--c-yellow));
+    background: linear-gradient(transparent .5em, transparentize(#111, .15) .5em, var(--c-white) 1em), linear-gradient(to right, $cyan, $magenta, $yellow);
   }
 
   @include mobile() {
@@ -114,7 +115,17 @@ h1 span {
   left: -10em;
   right: -10em;
   transform: translateY(-50%) rotate(-6deg);
-  mix-blend-mode: multiply;
+  text-shadow: 4px 8px var(--c-black);
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 8px;
+    top: 50%;
+    right: 10em;
+    left: 10em;
+    filter: blur(8px);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -125,38 +136,41 @@ h1 span {
 
 h1 .p-given-name {
   font-size: 5.33em;
-  color: var(--c-cyan);
+  color: $cyan;
   
   @include dark-mode() {
-    text-shadow: 0 0 .5em var(--c-cyan);
+    text-shadow: 0 0 .5em $cyan;
+
+    &::after {
+      background: linear-gradient(to right, transparentize($cyan, 1), $cyan, transparentize($cyan, 1));
+    }
   }
 }
 
 h1 .p-nickname {
   font-size: 2.66em;
-  color: var(--c-magenta);
-  margin-top: .25em;
+  color: $magenta;
+  margin-top: .5em;
   
   @include dark-mode() {
-    text-shadow: 0 0 1em var(--c-magenta);
+    text-shadow: 0 0 1em $magenta;
+
+    &::after {
+      background: linear-gradient(to right, transparentize($magenta, 1), $magenta, transparentize($magenta, 1));
+    }
   }
-}
-
-h1 .p-nickname::before {
-  content: "“";
-}
-
-h1 .p-nickname::after {
-  content: "”";
 }
 
 h1 .p-family-name {
   font-size: 2.66em;
-  color: var(--c-yellow);
-  margin-top: .75em;
+  color: $yellow;
+  margin-top: 1em;
   
   @include dark-mode() {
-    text-shadow: 0 0 1em var(--c-yellow);
+    text-shadow: 0 0 1em $yellow;
+    &::after {
+      background: linear-gradient(to right, transparentize($yellow, 1), $yellow, transparentize($yellow, 1));
+    }
   }
 }
 
@@ -186,13 +200,13 @@ h1 .p-family-name {
 
 .p-job-title a:hover,
 .p-job-title a:focus {
-  background-color: var(--c-magenta);
+  background-color: $magenta;
 }
 
 @media (prefers-color-scheme: dark) {
   .p-job-title a:hover,
   .p-job-title a:focus {
-    background-color: var(--c-yellow);
+    background-color: $yellow;
   }
 }
 

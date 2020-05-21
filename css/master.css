@@ -1,9 +1,5 @@
-@charset "UTF-8";
 @import url("https://rsms.me/inter/inter.css");
 :root {
-  --c-cyan: cyan;
-  --c-magenta: magenta;
-  --c-yellow: yellow;
   --c-white: #eee;
   --c-black: #111;
 }
@@ -68,14 +64,14 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5em, transparent), color-stop(0.5em, white)), -webkit-gradient(linear, left top, right top, from(var(--c-cyan)), color-stop(var(--c-magenta)), to(var(--c-yellow)));
-  background: linear-gradient(transparent 0.5em, white 0.5em), linear-gradient(to right, var(--c-cyan), var(--c-magenta), var(--c-yellow));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5em, transparent), color-stop(0.5em, var(--c-white))), -webkit-gradient(linear, left top, right top, color-stop(33.33%, cyan), color-stop(33.33%, magenta), color-stop(66.66%, magenta), color-stop(66.66%, yellow));
+  background: linear-gradient(transparent 0.5em, var(--c-white) 0.5em), linear-gradient(to right, cyan 33.33%, magenta 33.33%, magenta 66.66%, yellow 66.66%);
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5em, transparent), color-stop(0.5em, rgba(17, 17, 17, 0.85)), color-stop(1em, var(--c-white))), -webkit-gradient(linear, left top, right top, from(var(--c-cyan)), color-stop(var(--c-magenta)), to(var(--c-yellow)));
-    background: linear-gradient(transparent 0.5em, rgba(17, 17, 17, 0.85) 0.5em, var(--c-white) 1em), linear-gradient(to right, var(--c-cyan), var(--c-magenta), var(--c-yellow));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5em, transparent), color-stop(0.5em, rgba(17, 17, 17, 0.85)), color-stop(1em, var(--c-white))), -webkit-gradient(linear, left top, right top, from(cyan), color-stop(magenta), to(yellow));
+    background: linear-gradient(transparent 0.5em, rgba(17, 17, 17, 0.85) 0.5em, var(--c-white) 1em), linear-gradient(to right, cyan, magenta, yellow);
   }
 }
 
@@ -119,7 +115,18 @@ h1 span {
   right: -10em;
   -webkit-transform: translateY(-50%) rotate(-6deg);
           transform: translateY(-50%) rotate(-6deg);
-  mix-blend-mode: multiply;
+  text-shadow: 4px 8px var(--c-black);
+}
+
+h1 span::after {
+  content: "";
+  position: absolute;
+  height: 8px;
+  top: 50%;
+  right: 10em;
+  left: 10em;
+  -webkit-filter: blur(8px);
+          filter: blur(8px);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -130,44 +137,48 @@ h1 span {
 
 h1 .p-given-name {
   font-size: 5.33em;
-  color: var(--c-cyan);
+  color: cyan;
 }
 
 @media (prefers-color-scheme: dark) {
   h1 .p-given-name {
-    text-shadow: 0 0 0.5em var(--c-cyan);
+    text-shadow: 0 0 0.5em cyan;
+  }
+  h1 .p-given-name::after {
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0, 255, 255, 0)), color-stop(cyan), to(rgba(0, 255, 255, 0)));
+    background: linear-gradient(to right, rgba(0, 255, 255, 0), cyan, rgba(0, 255, 255, 0));
   }
 }
 
 h1 .p-nickname {
   font-size: 2.66em;
-  color: var(--c-magenta);
-  margin-top: .25em;
+  color: magenta;
+  margin-top: .5em;
 }
 
 @media (prefers-color-scheme: dark) {
   h1 .p-nickname {
-    text-shadow: 0 0 1em var(--c-magenta);
+    text-shadow: 0 0 1em magenta;
   }
-}
-
-h1 .p-nickname::before {
-  content: "“";
-}
-
-h1 .p-nickname::after {
-  content: "”";
+  h1 .p-nickname::after {
+    background: -webkit-gradient(linear, left top, right top, from(rgba(255, 0, 255, 0)), color-stop(magenta), to(rgba(255, 0, 255, 0)));
+    background: linear-gradient(to right, rgba(255, 0, 255, 0), magenta, rgba(255, 0, 255, 0));
+  }
 }
 
 h1 .p-family-name {
   font-size: 2.66em;
-  color: var(--c-yellow);
-  margin-top: .75em;
+  color: yellow;
+  margin-top: 1em;
 }
 
 @media (prefers-color-scheme: dark) {
   h1 .p-family-name {
-    text-shadow: 0 0 1em var(--c-yellow);
+    text-shadow: 0 0 1em yellow;
+  }
+  h1 .p-family-name::after {
+    background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 0, 0)), color-stop(yellow), to(rgba(255, 255, 0, 0)));
+    background: linear-gradient(to right, rgba(255, 255, 0, 0), yellow, rgba(255, 255, 0, 0));
   }
 }
 
@@ -197,13 +208,13 @@ h1 .p-family-name {
 
 .p-job-title a:hover,
 .p-job-title a:focus {
-  background-color: var(--c-magenta);
+  background-color: magenta;
 }
 
 @media (prefers-color-scheme: dark) {
   .p-job-title a:hover,
   .p-job-title a:focus {
-    background-color: var(--c-yellow);
+    background-color: yellow;
   }
 }
 
