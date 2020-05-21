@@ -64,8 +64,8 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5em, transparent), color-stop(0.5em, var(--c-white))), repeating-linear-gradient(to right, cyan 0, cyan 1em, var(--c-black) 1em, var(--c-black) 2em, magenta 2em, magenta 3em, var(--c-black) 3em, var(--c-black) 4em, yellow 4em, yellow 5em, var(--c-black) 5em, var(--c-black) 6em);
-  background: linear-gradient(transparent 0.5em, var(--c-white) 0.5em), repeating-linear-gradient(to right, cyan 0, cyan 1em, var(--c-black) 1em, var(--c-black) 2em, magenta 2em, magenta 3em, var(--c-black) 3em, var(--c-black) 4em, yellow 4em, yellow 5em, var(--c-black) 5em, var(--c-black) 6em);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5em, transparent), color-stop(0.5em, var(--c-white))), repeating-linear-gradient(-60deg, cyan 0, cyan 1em, var(--c-black) 1em, var(--c-black) 2em, magenta 2em, magenta 3em, var(--c-black) 3em, var(--c-black) 4em, yellow 4em, yellow 5em, var(--c-black) 5em, var(--c-black) 6em);
+  background: linear-gradient(transparent 0.5em, var(--c-white) 0.5em), repeating-linear-gradient(-60deg, cyan 0, cyan 1em, var(--c-black) 1em, var(--c-black) 2em, magenta 2em, magenta 3em, var(--c-black) 3em, var(--c-black) 4em, yellow 4em, yellow 5em, var(--c-black) 5em, var(--c-black) 6em);
 }
 
 @media (prefers-color-scheme: dark) {
