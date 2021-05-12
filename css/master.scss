@@ -4,17 +4,17 @@ $yellow: yellow;
 
 @mixin dark-mode {
   @media (prefers-color-scheme: dark) {
-    @content
+    @content;
   }
 }
 
 @mixin mobile {
   @media (max-width: 640px) {
-    @content
+    @content;
   }
 }
 
-@import url('https://rsms.me/inter/inter.css');
+@import url("https://rsms.me/inter/inter.css");
 
 :root {
   --c-white: #eee;
@@ -72,15 +72,62 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(transparent .5em, var(--c-white) .5em), repeating-linear-gradient(-45deg, $cyan 0, $cyan 1em, var(--c-black) 1em, var(--c-black) 2em, $magenta 2em, $magenta 3em, var(--c-black) 3em, var(--c-black) 4em, $yellow 4em, $yellow 5em, var(--c-black) 5em, var(--c-black) 6em);
+  background: linear-gradient(transparent 0.5em, var(--c-white) 0.5em),
+    repeating-linear-gradient(
+      -45deg,
+      $cyan 0,
+      $cyan 1em,
+      var(--c-black) 1em,
+      var(--c-black) 2em,
+      $magenta 2em,
+      $magenta 3em,
+      var(--c-black) 3em,
+      var(--c-black) 4em,
+      $yellow 4em,
+      $yellow 5em,
+      var(--c-black) 5em,
+      var(--c-black) 6em
+    );
 
   @include dark-mode() {
-    background: linear-gradient(transparent .5em, transparentize(#111, .15) .5em, var(--c-white) 1em), linear-gradient(to right, $cyan, $magenta, $yellow);
+    background: linear-gradient(
+        transparent 0.5em,
+        transparentize(#111, 0.15) 0.5em,
+        var(--c-white) 1em
+      ),
+      linear-gradient(to right, $cyan, $magenta, $yellow);
   }
 
   @include mobile() {
     font-size: 20px;
     padding: 4em 1em;
+  }
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+  p {
+    background: var(--c-black);
+    color: var(--c-white);
+    font-size: 0.66em;
+    padding: 1em 1.5em;
+    transform: rotate(1deg);
+    font-weight: 900;
+
+    a {
+      text-decoration: underline;
+
+      &:hover,
+      &:focus {
+        opacity: 0.75;
+      }
+
+      &:active {
+        opacity: 0.5;
+      }
+    }
   }
 }
 
@@ -137,12 +184,17 @@ h1 span {
 h1 .p-given-name {
   font-size: 5.33em;
   color: $cyan;
-  
+
   @include dark-mode() {
-    text-shadow: 0 0 .5em $cyan;
+    text-shadow: 0 0 0.5em $cyan;
 
     &::after {
-      background: linear-gradient(to right, transparentize($cyan, 1), $cyan, transparentize($cyan, 1));
+      background: linear-gradient(
+        to right,
+        transparentize($cyan, 1),
+        $cyan,
+        transparentize($cyan, 1)
+      );
     }
   }
 }
@@ -150,13 +202,18 @@ h1 .p-given-name {
 h1 .p-nickname {
   font-size: 2.66em;
   color: $magenta;
-  margin-top: .5em;
-  
+  margin-top: 0.5em;
+
   @include dark-mode() {
     text-shadow: 0 0 1em $magenta;
 
     &::after {
-      background: linear-gradient(to right, transparentize($magenta, 1), $magenta, transparentize($magenta, 1));
+      background: linear-gradient(
+        to right,
+        transparentize($magenta, 1),
+        $magenta,
+        transparentize($magenta, 1)
+      );
     }
   }
 }
@@ -165,11 +222,16 @@ h1 .p-family-name {
   font-size: 2.66em;
   color: $yellow;
   margin-top: 1em;
-  
+
   @include dark-mode() {
     text-shadow: 0 0 1em $yellow;
     &::after {
-      background: linear-gradient(to right, transparentize($yellow, 1), $yellow, transparentize($yellow, 1));
+      background: linear-gradient(
+        to right,
+        transparentize($yellow, 1),
+        $yellow,
+        transparentize($yellow, 1)
+      );
     }
   }
 }
@@ -177,12 +239,13 @@ h1 .p-family-name {
 .p-job-title {
   font-size: 1.33em;
   margin: 2em 0;
+  transform: rotate(-1deg);
 }
 
 .p-job-title a {
   font-weight: 900;
   color: var(--c-white);
-  padding: .25em .6em .25em .5em;
+  padding: 0.25em 0.6em 0.25em 0.5em;
   background-color: var(--c-black);
   -webkit-mask-size: cover;
   -moz-mask-size: cover;
@@ -245,25 +308,41 @@ h1 .p-family-name {
   }
 }
 
-.work li:nth-child(1)::after {
+.work li:nth-child(1) {
+  transform: rotate(-1deg);
+}
+
+.work li:nth-child(2) {
+  transform: rotate(1deg);
+}
+
+.work li:nth-child(3) {
+  transform: rotate(1deg);
+}
+
+.work li:nth-child(4) {
+  transform: rotate(-1deg);
+}
+
+.work li:nth-child(2)::after {
   -webkit-mask-image: url(../img/abstract.svg);
   -moz-mask-image: url(../img/abstract.svg);
   mask-image: url(../img/abstract.svg);
 }
 
-.work li:nth-child(2)::after {
+.work li:nth-child(3)::after {
   -webkit-mask-image: url(../img/dropbox.svg);
   -moz-mask-image: url(../img/dropbox.svg);
   mask-image: url(../img/dropbox.svg);
 }
 
-.work li:nth-child(3)::after {
+.work li:nth-child(4)::after {
   -webkit-mask-image: url(../img/instagram.svg);
   -moz-mask-image: url(../img/instagram.svg);
   mask-image: url(../img/instagram.svg);
 }
 
-.work li:nth-child(4)::after {
+.work li:nth-child(1)::after {
   -webkit-mask-image: url(../img/gowalla.svg);
   -moz-mask-image: url(../img/gowalla.svg);
   mask-image: url(../img/gowalla.svg);
@@ -283,7 +362,7 @@ h1 .p-family-name {
 .work small {
   font-weight: normal;
   display: block;
-  font-size: .66em;
+  font-size: 0.66em;
 }
 
 .work a:hover strong,
@@ -299,10 +378,12 @@ h2 {
   font-weight: 900;
   text-transform: uppercase;
   font-style: italic;
+  transform: rotate(-1deg);
 }
 
 .links {
   margin-bottom: 2.66em;
+  transform: rotate(1deg);
 
   li {
     display: inline;
