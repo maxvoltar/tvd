@@ -1,31 +1,8 @@
-$cyan: cyan;
-$magenta: magenta;
-$yellow: yellow;
-
-@mixin dark-mode {
-  @media (prefers-color-scheme: dark) {
-    @content;
-  }
-}
-
-@mixin mobile {
-  @media (max-width: 640px) {
-    @content;
-  }
-}
-
 @import url("https://rsms.me/inter/inter.css");
-
 :root {
-  --c-white: #eee;
-  --c-black: #111;
-}
-
-@include dark-mode() {
-  :root {
-    --c-white: #111;
-    --c-black: #eee;
-  }
+  color-scheme: light dark;
+  --c-white: light-dark(#eee, #111);
+  --c-black: light-dark(#111, #eee);
 }
 
 * {
@@ -72,13 +49,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(transparent 0.5em, var(--c-white) 0.5em), repeating-linear-gradient(-45deg, $cyan 0, $cyan 1em, var(--c-black) 1em, var(--c-black) 2em, $magenta 2em, $magenta 3em, var(--c-black) 3em, var(--c-black) 4em, $yellow 4em, $yellow 5em, var(--c-black) 5em, var(--c-black) 6em);
-
-  @include dark-mode() {
-    background: linear-gradient(transparent 0.5em, transparentize(#111, 0.15) 0.5em, var(--c-white) 1em), linear-gradient(to right, $cyan, $magenta, $yellow);
+  background: linear-gradient(transparent 0.5em, var(--c-white) 0.5em), repeating-linear-gradient(-45deg, cyan 0, cyan 1em, var(--c-black) 1em, var(--c-black) 2em, magenta 2em, magenta 3em, var(--c-black) 3em, var(--c-black) 4em, yellow 4em, yellow 5em, var(--c-black) 5em, var(--c-black) 6em);
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(transparent 0.5em, rgba(17, 17, 17, 0.85) 0.5em, var(--c-white) 1em), linear-gradient(to right, cyan, magenta, yellow);
   }
-
-  @include mobile() {
+}
+@media (max-width: 640px) {
+  body {
     font-size: 20px;
     padding: 4em 1em;
   }
@@ -88,27 +67,23 @@ body {
   display: flex;
   justify-content: center;
   margin-bottom: 2em;
-  p {
-    background: var(--c-black);
-    color: var(--c-white);
-    font-size: 0.66em;
-    padding: 1em 1.5em;
-    transform: rotate(1deg);
-    font-weight: 900;
-
-    a {
-      text-decoration: underline;
-
-      &:hover,
-      &:focus {
-        opacity: 0.75;
-      }
-
-      &:active {
-        opacity: 0.5;
-      }
-    }
-  }
+}
+.banner p {
+  background: var(--c-black);
+  color: var(--c-white);
+  font-size: 0.66em;
+  padding: 1em 1.5em;
+  transform: rotate(1deg);
+  font-weight: 900;
+}
+.banner p a {
+  text-decoration: underline;
+}
+.banner p a:hover, .banner p a:focus {
+  opacity: 0.75;
+}
+.banner p a:active {
+  opacity: 0.5;
 }
 
 h1 {
@@ -119,20 +94,19 @@ h1 {
   font-style: italic;
   margin: 0 -1em;
   overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    height: 13.33em;
-    width: 13.33em;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background: url(../img/photo.png) no-repeat center center;
-    background-size: cover;
-    border-radius: 50%;
-    mix-blend-mode: luminosity;
-  }
+}
+h1::before {
+  content: "";
+  position: absolute;
+  height: 13.33em;
+  width: 13.33em;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: url(../img/photo.png) no-repeat center center;
+  background-size: cover;
+  border-radius: 50%;
+  mix-blend-mode: luminosity;
 }
 
 h1 span {
@@ -143,16 +117,15 @@ h1 span {
   right: -10em;
   transform: translateY(-50%) rotate(-6deg);
   text-shadow: 4px 8px var(--c-black);
-
-  &::after {
-    content: "";
-    position: absolute;
-    height: 8px;
-    top: 50%;
-    right: 10em;
-    left: 10em;
-    filter: blur(8px);
-  }
+}
+h1 span::after {
+  content: "";
+  position: absolute;
+  height: 8px;
+  top: 50%;
+  right: 10em;
+  left: 10em;
+  filter: blur(8px);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -160,44 +133,44 @@ h1 span {
     mix-blend-mode: lighten;
   }
 }
-
 h1 .p-given-name {
   font-size: 5.33em;
-  color: $cyan;
-
-  @include dark-mode() {
-    text-shadow: 0 0 0.5em $cyan;
-
-    &::after {
-      background: linear-gradient(to right, transparentize($cyan, 1), $cyan, transparentize($cyan, 1));
-    }
+  color: cyan;
+}
+@media (prefers-color-scheme: dark) {
+  h1 .p-given-name {
+    text-shadow: 0 0 0.5em cyan;
+  }
+  h1 .p-given-name::after {
+    background: linear-gradient(to right, rgba(0, 255, 255, 0), cyan, rgba(0, 255, 255, 0));
   }
 }
 
 h1 .p-nickname {
   font-size: 2.66em;
-  color: $magenta;
+  color: magenta;
   margin-top: 0.5em;
-
-  @include dark-mode() {
-    text-shadow: 0 0 1em $magenta;
-
-    &::after {
-      background: linear-gradient(to right, transparentize($magenta, 1), $magenta, transparentize($magenta, 1));
-    }
+}
+@media (prefers-color-scheme: dark) {
+  h1 .p-nickname {
+    text-shadow: 0 0 1em magenta;
+  }
+  h1 .p-nickname::after {
+    background: linear-gradient(to right, rgba(255, 0, 255, 0), magenta, rgba(255, 0, 255, 0));
   }
 }
 
 h1 .p-family-name {
   font-size: 2.66em;
-  color: $yellow;
+  color: yellow;
   margin-top: 1em;
-
-  @include dark-mode() {
-    text-shadow: 0 0 1em $yellow;
-    &::after {
-      background: linear-gradient(to right, transparentize($yellow, 1), $yellow, transparentize($yellow, 1));
-    }
+}
+@media (prefers-color-scheme: dark) {
+  h1 .p-family-name {
+    text-shadow: 0 0 1em yellow;
+  }
+  h1 .p-family-name::after {
+    background: linear-gradient(to right, rgba(255, 255, 0, 0), yellow, rgba(255, 255, 0, 0));
   }
 }
 
@@ -228,49 +201,46 @@ h1 .p-family-name {
 
 .p-job-title a:hover,
 .p-job-title a:focus {
-  background-color: $magenta;
+  background-color: magenta;
 }
 
 @media (prefers-color-scheme: dark) {
   .p-job-title a:hover,
   .p-job-title a:focus {
-    background-color: $yellow;
+    background-color: yellow;
   }
 }
-
 .work {
   margin: 0 auto 2.66em;
   max-width: 960px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
-  li {
-    width: 33.33%;
-    padding: 1em;
-    min-width: 8em;
-    position: relative;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 1em;
-      left: 0;
-      right: 0;
-      height: 4em;
-      background-color: var(--c-black);
-      -webkit-mask-size: 4em;
-      -moz-mask-size: 4em;
-      mask-size: 4em;
-      -webkit-mask-position: center top;
-      -moz-mask-position: center top;
-      mask-position: center top;
-      -webkit-mask-repeat: no-repeat;
-      -moz-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-      pointer-events: none;
-    }
-  }
+}
+.work li {
+  width: 33.33%;
+  padding: 1em;
+  min-width: 8em;
+  position: relative;
+}
+.work li::after {
+  content: "";
+  position: absolute;
+  top: 1em;
+  left: 0;
+  right: 0;
+  height: 4em;
+  background-color: var(--c-black);
+  -webkit-mask-size: 4em;
+  -moz-mask-size: 4em;
+  mask-size: 4em;
+  -webkit-mask-position: center top;
+  -moz-mask-position: center top;
+  mask-position: center top;
+  -webkit-mask-repeat: no-repeat;
+  -moz-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  pointer-events: none;
 }
 
 .work li:nth-child(odd) {
@@ -347,18 +317,15 @@ h2 {
 .links {
   margin-bottom: 2.66em;
   transform: rotate(1deg);
-
-  li {
-    display: inline;
-
-    &::after {
-      content: ", ";
-    }
-
-    &:last-child::after {
-      content: "";
-    }
-  }
+}
+.links li {
+  display: inline;
+}
+.links li::after {
+  content: ", ";
+}
+.links li:last-child::after {
+  content: "";
 }
 
 .links li a:hover,
@@ -367,3 +334,5 @@ ul + p a:hover,
 ul + p a:focus {
   text-decoration: underline;
 }
+
+/*# sourceMappingURL=main.css.map */

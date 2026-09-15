@@ -2,8 +2,8 @@
   "name": "timvandamme.com",
   "private": true,
   "scripts": {
-    "watch:css": "sass --watch css/master.scss:css/master.css",
-    "build:css": "sass css/master.scss:css/master.css"
+    "watch:css": "sass --watch css:css",
+    "build:css": "sass css:css"
   },
   "devDependencies": {
     "sass": "^1.92.1"
