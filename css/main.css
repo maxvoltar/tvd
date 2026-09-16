@@ -1,10 +1,9 @@
-@import "https://rsms.me/inter/inter.css";
+@charset "UTF-8";
 :root {
-  font-size: clamp(16px, 16px + (24 - 16) * (100vw - 375px) / (1440 - 375), 24px);
+  font-size: clamp(16px, 16px + 8 * (100vw - 375px) / 1065, 24px);
   color-scheme: light dark;
   --background: light-dark(#eee, #111);
   --text: light-dark(#111, #eee);
-  --u: clamp(3.75px, 1vw, 14.4px);
 }
 
 * {
@@ -27,10 +26,10 @@ img {
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
-  font-family: Georgia, serif;
-  font-size: 1rem;
+  font-family: "kepler-3-subhead", serif;
   font-feature-settings: "liga" on;
   color: var(--text);
+  text-wrap: pretty;
   background-color: var(--background);
   text-rendering: optimizelegibility;
   -moz-osx-font-smoothing: grayscale;
@@ -42,15 +41,16 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  filter: grayscale(1);
   mask-image: url("../img/mask.svg");
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: cover;
 }
 .hero figcaption {
-  padding-right: calc(7.5 * var(--u));
-  margin-top: calc(-2.5 * var(--u));
-  font-size: calc(20 / 24 * 1rem);
+  padding-right: 4.5rem;
+  margin-top: -1.5rem;
+  font-size: 0.833em;
   font-style: italic;
   text-align: right;
   opacity: 0.5;
@@ -68,40 +68,128 @@ a:active {
   opacity: 0.5;
 }
 
-section {
-  max-width: 960px;
-  padding: calc(10 * var(--u));
+main {
+  max-width: 90rem;
+  padding: 2.5rem;
   margin: 0 auto;
 }
+
+section {
+  display: grid;
+  gap: 0.5rem 2.5rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--text);
+}
+section:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+section:last-child {
+  padding-bottom: 0;
+}
+@media (width > 640px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  section h1 {
+    grid-column: 1/-1;
+  }
+  section .content {
+    grid-column: 1/-1;
+    columns: 2;
+    column-gap: 2.5rem;
+  }
+}
+@media (width > 1024px) {
+  section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  section h1 {
+    grid-column: 1;
+  }
+  section .content {
+    grid-column: 2/-1;
+    columns: 2;
+    column-gap: 2.5rem;
+  }
+}
+section h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2em;
+}
 section p {
-  margin-bottom: calc(2.5 * var(--u));
+  margin-bottom: 1.5rem;
 }
 section cite {
-  font-size: calc(20 / 24 * 1rem);
+  font-size: 0.833em;
   opacity: 0.5;
 }
-section .intro {
-  display: grid;
-  gap: calc(2.5 * var(--u));
-}
 section .intro p {
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 section .intro p:first-child::first-letter {
   float: left;
-  margin-right: calc(1 * var(--u));
-  font-size: calc(72 / 24 * 1rem);
+  margin-right: 0.6rem;
+  font-size: 3em;
   font-style: small-caps;
   line-height: 1;
 }
-@media (width > 640px) {
-  section .intro {
-    grid-template-columns: 1fr 1fr;
-    column-gap: calc(5 * var(--u));
-  }
-  section .intro footer {
-    grid-column: 1/-1;
-  }
+section .intro footer {
+  margin-top: 0.5rem;
+}
+section .socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+section .socials li:not(:last-child)::after {
+  margin-left: 0.5rem;
+  content: "•";
+  opacity: 0.5;
+}
+section .timeline {
+  padding-left: 0;
+  list-style: none;
+}
+section .timeline > li {
+  margin-bottom: 1.5rem;
+  break-inside: avoid;
+}
+section .timeline > li .role,
+section .timeline > li time {
+  display: block;
+  font-size: 0.833em;
+  opacity: 0.5;
+}
+section .timeline > li ul {
+  padding-left: 0;
+  margin-top: 0.5rem;
+  list-style: none;
+}
+section .press {
+  padding-left: 0;
+  list-style: none;
+}
+section .press li {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  column-gap: 1rem;
+  margin-bottom: 0.75rem;
+  break-inside: avoid;
+}
+section .press time {
+  grid-column: 1;
+  font-size: 0.833em;
+  opacity: 0.5;
+}
+section .press a {
+  grid-column: 2;
+}
+section .press cite {
+  grid-column: 2;
+}
+section .press cite::before {
+  content: "— ";
 }
 
 /*# sourceMappingURL=main.css.map */

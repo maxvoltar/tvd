@@ -1,46 +1,16 @@
-@import "https://rsms.me/inter/inter.css";
-
 // @mixin dark-mode {
 //   @media (prefers-color-scheme: dark) {
 //     @content;
 //   }
 // }
 
-// ── Fluid scale ──────────────────────────────────────────────
-// Everything keyed off viewport width. Tweak these four values.
-$vp-min: 375;   // px — stop shrinking below this width
-$vp-max: 1440;  // px — stop growing above this width
-$font-min: 16;  // px — root font size at $vp-min
-$font-max: 24;  // px — root font size at $vp-max
-
-// 1u ≈ 1vw between min/max; freezes outside that range.
-// Use u(10) instead of 10vw, or calc(10 * var(--u)).
-@function u($n) {
-  @return calc(#{$n} * var(--u));
-}
-
-@mixin mobile {
-  @media (width <= 640px) {
-    @content; 
-  }
-}
-
 :root {
-  // Root font scales between $font-min and $font-max across the viewport range.
-  // Use rem for type so it follows automatically.
-  font-size: clamp(
-    #{$font-min}px,
-    calc(
-      #{$font-min}px + (#{$font-max} - #{$font-min}) *
-        ((100vw - #{$vp-min}px) / (#{$vp-max} - #{$vp-min}))
-    ),
-    #{$font-max}px
-  );
+  // Fluid root size: 16px @ 375px → 24px @ 1440px. Everything else in rem/em follows.
+  font-size: clamp(16px, calc(16px + (24 - 16) * (100vw - 375px) / (1440 - 375)), 24px);
   color-scheme: light dark;
 
   --background: light-dark(#eee, #111);
   --text: light-dark(#111, #eee);
-  --u: clamp(#{$vp-min * 0.01}px, 1vw, #{$vp-max * 0.01}px);
 }
 
 * {
@@ -53,6 +23,8 @@ $font-max: 24;  // px — root font size at $vp-max
   color: inherit;
   text-decoration: none;
   list-style: none;
+
+  // text-box: trim-both cap alphabetic;
 }
 
 img {
@@ -63,12 +35,10 @@ img {
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
-
-  // font-family: Inter, sans-serif;
-  font-family: Georgia, serif;
-  font-size: 1rem;
+  font-family: "kepler-3-subhead", serif;
   font-feature-settings: "liga" on;
   color: var(--text);
+  text-wrap: pretty;
   background-color: var(--background);
   text-rendering: optimizelegibility;
   -moz-osx-font-smoothing: grayscale;
@@ -77,20 +47,21 @@ body {
 
 .hero {
   img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(1);
     mask-image: url("../img/mask.svg");
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
   }
 
   figcaption {
-    padding-right: u(7.5);
-    margin-top: u(-2.5);
-    font-size: calc(20 / #{$font-max} * 1rem);
+    padding-right: 4.5rem;
+    margin-top: -1.5rem;
+    font-size: 0.833em;
     font-style: italic;
     text-align: right;
     opacity: 0.5;
@@ -112,48 +83,155 @@ a {
   }
 }
 
-section {
-  max-width: 960px;
-  padding: u(10);
+main {
+  max-width: 90rem;
+  padding: 2.5rem;
   margin: 0 auto;
+}
+
+section {
+  display: grid;
+  gap: 0.5rem 2.5rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--text);
+
+  &:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  @media (width > 640px) {
+    grid-template-columns: repeat(2, 1fr);
+
+    h1 {
+      grid-column: 1 / -1;
+    }
+
+    .content {
+      grid-column: 1 / -1;
+      columns: 2;
+      column-gap: 2.5rem;
+    }
+  }
+
+  @media (width > 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+
+    h1 {
+      grid-column: 1;
+    }
+
+    .content {
+      grid-column: 2 / -1;
+      columns: 2;
+      column-gap: 2.5rem;
+    }
+  }
+
+  h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2em;
+  }
 
   p {
-    margin-bottom: u(2.5);
+    margin-bottom: 1.5rem;
   }
 
   cite {
-    font-size: calc(20 / #{$font-max} * 1rem);
+    font-size: 0.833em;
     opacity: 0.5;
   }
 
   .intro {
-    display: grid;
-    gap: u(2.5);
-
     p {
-      margin-bottom: 0;
+      margin-bottom: 1rem;
 
       &:first-child {
-        // 
-
         &::first-letter {
           float: left;
-          margin-right: u(1);
-          font-size: calc(72 / #{$font-max} * 1rem);
+          margin-right: 0.6rem;
+          font-size: 3em;
           font-style: small-caps;
-
-          // font-weight: bold;
           line-height: 1;
         }
       }
     }
 
-    @media (width > 640px) {
-      grid-template-columns: 1fr 1fr;
-      column-gap: u(5);
+    footer {
+      margin-top: 0.5rem;
+    }
+  }
 
-      footer {
-        grid-column: 1 / -1;
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    li {
+      &:not(:last-child) {
+        &::after {
+          margin-left: 0.5rem;
+          content: "•";
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  .timeline {
+    padding-left: 0;
+    list-style: none;
+
+    > li {
+      margin-bottom: 1.5rem;
+      break-inside: avoid;
+
+      .role,
+      time {
+        display: block;
+        font-size: 0.833em;
+        opacity: 0.5;
+      }
+
+      ul {
+        padding-left: 0;
+        margin-top: 0.5rem;
+        list-style: none;
+      }
+    }
+  }
+
+  .press {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      display: grid;
+      grid-template-columns: 4rem 1fr;
+      column-gap: 1rem;
+      margin-bottom: 0.75rem;
+      break-inside: avoid;
+    }
+
+    time {
+      grid-column: 1;
+      font-size: 0.833em;
+      opacity: 0.5;
+    }
+
+    a {
+      grid-column: 2;
+    }
+
+    cite {
+      grid-column: 2;
+
+      &::before {
+        content: "— ";
       }
     }
   }
