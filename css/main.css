@@ -82,7 +82,6 @@ section::before {
 
 body {
   min-height: 100vh;
-  margin: 0 auto;
   scroll-behavior: smooth;
   font-family: proxima-soft-condensed, sans-serif;
   font-weight: 500;
@@ -100,6 +99,7 @@ body > footer {
   margin: -3rem 2.5rem 2.5rem;
   text-align: right;
   border-top: 2px solid var(--text);
+  text-transform: uppercase;
 }
 @media (width <= 1024px) {
   body > footer {
@@ -159,13 +159,6 @@ body > footer {
   object-fit: cover;
   object-position: center;
   filter: grayscale(1);
-}
-.hero figcaption {
-  padding-right: 2.5rem;
-  margin-top: -1rem;
-  font-size: 0.833em;
-  font-weight: 700;
-  text-align: right;
 }
 
 header {
