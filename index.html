@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Tim Van Damme</title>
@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1"
     />
-    <meta content="Tim Van Damme" name="author" />
+    <meta name="author" content="Tim Van Damme" />
     <meta
       name="description"
       content="Personal homepage of Tim Van Damme, designer."
@@ -36,85 +36,293 @@
       property="og:description"
       content="Personal homepage of Tim Van Damme, product designer."
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="css/master.css"
-      media="screen"
-    />
+    <link rel="stylesheet" href="https://use.typekit.net/pzo1zwb.css" />
+    <link rel="stylesheet" href="css/main.css" media="screen" />
   </head>
   <body>
-    <div class="h-card">
-      <div class="banner">
-        <p>
-          Head over to <a rel="me" href="https://mvkb.com/">mvkb.com</a> to meet
-          my new side project.
-        </p>
-      </div>
-      <h1>
-        <span class="p-given-name">Tim</span>
-        <span class="p-nickname">“maxvoltar”</span>
-        <span class="p-family-name">Van Damme</span>
-      </h1>
-      <p class="p-job-title">
-        <strong>Software Designer</strong> at
-        <a href="https://figma.com/">Figma</a>.
-      </p>
-      <ul class="work">
-        <li>
-          <a href="https://figma.com/">
-            <strong>Figma</strong>
-            <small>2023-Current</small>
-          </a>
-        </li>
-        <li>
-          <a href="https://gowalla.com/">
-            <strong>Gowalla</strong>
-            <small>2010-2011, 2021-2023</small>
-          </a>
-        </li>
-        <li>
-          <a href="https://abstract.com/">
-            <strong>Abstract</strong>
-            <small>2016-2021</small>
-          </a>
-        </li>
-        <li>
-          <a href="https://dropbox.com/">
-            <strong>Dropbox</strong>
-            <small>2013-2015</small>
-          </a>
-        </li>
-        <li>
-          <a href="https://instagram.com/">
-            <strong>Instagram</strong>
-            <small>2012-2013</small>
-          </a>
-        </li>
-      </ul>
-      <h2>Across the internet</h2>
-      <ul class="links">
-        <li><a rel="me" href="https://twitter.com/maxvoltar">Twitter</a></li>
-        <li>
-          <a rel="me" href="https://instagram.com/maxvoltar">Instagram</a>
-        </li>
-        <li>
-          <a rel="me" href="https://bsky.app/profile/maxvoltar.be">Bluesky</a>
-        </li>
-        <li>
-          <a rel="me" href="https://www.threads.com/@maxvoltar">Threads</a>
-        </li>
-        <li>
-          <a rel="me" href="https://www.linkedin.com/in/tim-van-damme-1a11756b"
-            >LinkedIn</a
-          >
-        </li>
-      </ul>
-      <p>
-        <a rel="me" class="u-email" href="mailto:tim@maxvoltar.be"
-          >tim@maxvoltar.be</a
-        >
-      </p>
-    </div>
+    <svg class="filter-defs" aria-hidden="true">
+      <filter id="ink-bleed" x="-2%" y="-2%" width="104%" height="104%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="5" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="rough" />
+        <feGaussianBlur in="rough" stdDeviation="0.3" result="soft" />
+        <feComponentTransfer in="soft">
+          <feFuncA type="linear" slope="1.7" intercept="-0.12" />
+        </feComponentTransfer>
+      </filter>
+      <!-- Same bleed, but the region is relative to a 2px-tall rule: 2% of 2px
+           would clip the displacement, so the Y overflow is in multiples of the
+           hairline instead. -->
+      <filter id="ink-bleed-rule" x="-1%" y="-400%" width="102%" height="900%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="5" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="rough" />
+        <feGaussianBlur in="rough" stdDeviation="0.3" result="soft" />
+        <feComponentTransfer in="soft">
+          <feFuncA type="linear" slope="1.7" intercept="-0.12" />
+        </feComponentTransfer>
+      </filter>
+    </svg>
+    <figure class="hero">
+      <img
+      src="img/cover.jpg"
+      alt="Tim Van Damme speaking at Figma Config 2025"
+      />
+    </figure>
+    
+    <header>
+      <h1>Tim Van Damme</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2 id="about"><span>About</span></h2>
+        <blockquote class="intro">
+          <p>
+            Tim Van Damme (aka. <a href="https://maxvoltar.com/">Max Voltar</a>)
+            is a product designer at Figma, where he owns the icon system and
+            has helped shape UI3 and the surfaces around it — work that’s
+            everywhere in the product and, by design, mostly unnoticed. Craft is
+            the through-line. He sets a high bar, holds it, and pulls the work
+            around him up to meet it.
+          </p>
+          <p>
+            He’s also a connector. He jams readily, prototypes to think, and
+            makes a habit of asking the obvious question nobody else wants to
+            raise. He builds community as seriously as he builds systems — from
+            icons to the swag people actually want to wear — and has a
+            reputation for making the people around him better without needing
+            credit for it.
+          </p>
+          <hr>
+          <footer>
+            <cite>
+              Synthesized from colleagues’ notes; my impostor syndrome would
+              never let me write this.
+            </cite>
+          </footer>
+        </blockquote>
+      </section>
+
+      <section>
+        <h2 id="work"><span>Work</span></h2>
+        <ul class="timeline">
+          <li>
+            <div>
+              <a href="https://figma.com/"><strong>Figma</strong></a>
+              <time>2023–Current</time>
+              <span class="role">Software designer</span>
+            </div>
+            <ul>
+              <li><a href="https://www.figma.com/blog/behind-our-redesign-ui3/">UI3</a></li>
+              <li><a href="https://www.figma.com/blog/the-making-of-a-product-icon/">Icons/rebrand</a></li>
+              <li><a href="https://www.figma.com/blog/introducing-figma-draw/">Draw</a></li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <strong>Gowalla <abbr title="Defunct">†</abbr></strong>
+              <time>2021–2023</time>
+              <span class="role">Software designer</span>
+            </div>
+            <ul>
+              <li><a href="https://techcrunch.com/2023/03/10/gowalla-location-based-social-app/">Gowalla 2.0</a></li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <strong>Abstract <abbr title="Defunct">†</abbr></strong>
+              <time>2016–2021</time>
+              <span class="role">Software designer, first employee</span>
+            </div>
+            <ul>
+              <li><a href="https://versionone.vc/announcing-abstract/">Alpha</a></li>
+              <li><a href="https://techcrunch.com/2017/07/11/abstract/">Beta</a></li>
+              <li><a href="https://fs-abstract-ba3e9ada2dfba-fd2bf1122bd20.webflow.io/blog/sketch-libraries-abstract-per-project-libraries">Sketch Libraries</a></li>
+              <li><a href="https://fs-abstract-ba3e9ada2dfba-fd2bf1122bd20.webflow.io/blog/compare-mode">Compare mode</a></li>
+              <li><a href="https://fs-abstract-ba3e9ada2dfba-fd2bf1122bd20.webflow.io/blog/dark-mode">Dark mode</a></li>
+              <li>…</li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <a href="https://dropbox.com/"><strong>Dropbox</strong></a>
+              <time>2013–2015</time>
+              <span class="role">Software designer</span>
+            </div>
+            <ul>
+              <li><a href="https://blog.dropbox.com/topics/product/a-fresh-dropbox-for-iphone-ipad">iOS 7 redesign</a></li>
+              <li><a href="https://blog.dropbox.com/topics/company/simplify-your-brand">App icons</a></li>
+              <li><a href="https://blog.dropbox.com/topics/company/a-home-for-life">Carousel</a></li>
+              <li><a href="https://blog.dropbox.com/topics/company/welcome-mailbox">Mailbox for iOS</a></li>
+              <li><a href="https://blog.dropbox.com/topics/company/a-home-for-life">Mailbox for macOS</a></li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <a href="https://instagram.com/"><strong>Instagram</strong></a>
+              <time>2012–2013</time>
+              <span class="role">Software designer</span>
+            </div>
+            <ul>
+              <li><a href="https://about.instagram.com/blog/announcements/update-what-new-in-version-2-1">Redesign</a></li>
+              <li><a href="https://about.instagram.com/blog/announcements/introducing-instagram-explore-photo-maps-more">iOS redesign</a></li>
+              <li><a href="https://about.instagram.com/blog/announcements/introducing-instagram-for-android">Android app</a></li>
+              <li><a href="https://about.instagram.com/blog/announcements/introducing-instagram-explore-photo-maps-more">Photo maps</a></li>
+              <li><a href="https://about.instagram.com/blog/announcements/introducing-video-on-instagram">Video</a></li>
+            </ul>
+          </li>
+          <li>
+            <div>
+              <strong>Gowalla <abbr title="Defunct">†</abbr></strong>
+              <time>2010–2011</time>
+              <span class="role">Software designer</span>
+            </div>
+            <ul>
+              <li><a href="https://zeldman.com/2010/03/04/van-damme-thats-good-design/">Website</a></li>
+              <li><a href="https://techcrunch.com/2010/12/02/gowalla-3-foursquare-facebook-twitter/">iOS</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="side-projects"><span>Side projects</span></h2>
+        <ul class="timeline">
+          <li>
+            <div>
+              <a href="https://mvkb.com/"><strong>MVKB</strong></a>
+              <time>2021–Current</time>
+              <span class="role">Founder</span>
+            </div>
+            <ul>
+              <li>Keycaps, keyboards, artisans, commissions</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="press"><span>Press</span></h2>
+        <ul class="press">
+          <li>
+            <a href="https://apbc.be/stories/creatives-creatives-rizon-parein-x-tim-van-damme">Creatives on Creatives (Dutch)</a>
+            <div>
+              <time datetime="2024">2024</time>
+              <cite>APBC</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://blog.cottonbureau.com/feature-friday-004-tim-van-damme/">Feature Friday</a>
+            <div>
+              <time datetime="2023">2023</time>
+              <cite>Cotton Bureau</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://dribbble.com/stories/2019/02/05/dribbble-interview-tim-van-damme-shares-a-simple-solution-to-prioritize-features-in-your-work">Dribbble Interview</a>
+            <div>
+              <time datetime="2019">2019</time>
+              <cite>Dribbble</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://layout.fm/episodes/104">iOS 7 Was Leggings</a>
+            <div>
+              <time datetime="2018">2018</time>
+              <cite>Layout.fm</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://solomon.io/tim-van-damme-founder-of-abstract/">Founder of Abstract</a>
+            <div>
+              <time datetime="2016">2016</time>
+              <cite>Sam Solomon</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://layout.fm/episodes/23">Stop Calling the iPhone a Phone</a>
+            <div>
+              <time datetime="2016">2016</time>
+              <cite>Layout.fm</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://zurb.com/soapbox/tim-van-damme-s-soapbox">The Right Look and Feel</a>
+            <div>
+              <time datetime="2014">2014</time>
+              <cite>ZURB Soapbox</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://www.creativebloq.com/netmag/dropboxs-tim-van-damme-working-talented-people-21410855">Working with talented people</a>
+            <div>
+              <time datetime="2014">2014</time>
+              <cite>Creative Bloq</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://thegreatdiscontent.com/interview/tim-van-damme/">Tim Van Damme</a>
+            <div>
+              <time datetime="2014">2014</time>
+              <cite>The Great Discontent</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://thenextweb.com/news/inside-the-mind-of-a-designer-meet-instagrams-tim-van-damme">Inside the mind of a designer</a>
+            <div>
+              <time datetime="2013">2013</time>
+              <cite>The Next Web</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://zeldman.com/2010/03/04/van-damme-thats-good-design/">Van Damme, that’s good design</a>
+            <div>
+              <time datetime="2010">2010</time>
+              <cite>Jeffrey Zeldman</cite>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="talks"><span>Talks</span></h2>
+        <ul class="press">
+          <li>
+            <a href="https://www.youtube.com/watch?v=bCZ5_orYuyk">Expressive design and illustration in Figma Draw</a>
+            <div>
+              <time datetime="2025">2025</time>
+              <cite>Config</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=A5LTtk3rr7Q">Designing Figma’s UI3 icons</a>
+            <div>
+              <time datetime="2025">2025</time>
+              <cite>Deep Dive with Jay</cite>
+            </div>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=T8l2P7w9y58">Change is Constant</a>
+            <div>
+              <time datetime="2019">2019</time>
+              <cite>Loupe</cite>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="socials"><span>Socials</span></h2>
+        <ul class="socials">
+          <li><a rel="me" href="https://twitter.com/maxvoltar">Twitter/X</a></li>
+          <li><a rel="me" href="https://instagram.com/maxvoltar">Instagram</a></li>
+          <li><a rel="me" href="https://bsky.app/profile/maxvoltar.be">Bluesky</a></li>
+          <li><a rel="me" href="https://www.threads.com/@maxvoltar">Threads</a></li>
+          <li><a rel="me" href="https://www.linkedin.com/in/tim-van-damme-1a11756b">LinkedIn</a></li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>© Tim Van Damme 2026</p>
+    </footer>
   </body>
 </html>

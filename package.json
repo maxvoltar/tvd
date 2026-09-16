@@ -1,0 +1,19 @@
+{
+  "name": "timvandamme.com",
+  "private": true,
+  "scripts": {
+    "watch:css": "sass --watch css:css",
+    "build:css": "sass css:css",
+    "lint": "npm run lint:css && npm run lint:html",
+    "lint:css": "stylelint \"css/**/*.scss\"",
+    "lint:html": "htmlhint \"*.html\""
+  },
+  "devDependencies": {
+    "htmlhint": "^1.9.2",
+    "sass": "^1.92.1",
+    "stylelint": "^17.15.0",
+    "stylelint-config-recess-order": "^7.8.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-order": "^8.1.1"
+  }
+}
