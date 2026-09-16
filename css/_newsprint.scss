@@ -4,6 +4,7 @@
 @use "sass:list";
 @use "sass:math";
 @use "sass:string";
+@use "breakpoints" as *;
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -50,7 +51,7 @@
 // hero's white paper into the background in both modes.
 body {
   background-image: url("../img/paper-light.jpg");
-  background-size: 512px 512px;
+  background-size: 256px 256px;
 
   @media (prefers-color-scheme: dark) {
     background-image: url("../img/paper-dark.jpg");
@@ -76,9 +77,10 @@ body {
 
 // Distance between dot centres, in CSS px. Coarse on purpose: newsprint.
 $pitch: 3;
+$pitch-mobile: 2;
 
 // How hard tones are pushed into dots. 999 is a pure threshold.
-$dot-contrast: 3.5;
+$dot-contrast: 4;
 
 // Dot profile, as (gradient offset, ink strength) pairs from the cell centre
 // (offset 0) to the cell corner (offset 1). The photo is shown at just over
@@ -102,9 +104,9 @@ $dot-profile: (0 0.5) (0.354 0.55) (0.53 0.64) (0.707 0.82) (0.85 1) (1 1);
 
 // One ink screen: a grid of soft dots rotated to the screen angle. The SVG has
 // no intrinsic size, so it fills the element and stays vector-crisp at any DPI.
-@function ink-screen($ink, $angle) {
+@function ink-screen($ink, $angle, $dot-pitch: $pitch) {
   @return svg-url(
-    "<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><defs><radialGradient id='g' r='0.7071'>#{dot-stops($ink)}</radialGradient><pattern id='p' width='#{$pitch}' height='#{$pitch}' patternUnits='userSpaceOnUse' patternTransform='rotate(#{$angle})'><rect width='#{$pitch}' height='#{$pitch}' fill='url(#g)'/></pattern></defs><rect width='100%' height='100%' fill='url(#p)'/></svg>"
+    "<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><defs><radialGradient id='g' r='0.7071'>#{dot-stops($ink)}</radialGradient><pattern id='p' width='#{$dot-pitch}' height='#{$dot-pitch}' patternUnits='userSpaceOnUse' patternTransform='rotate(#{$angle})'><rect width='#{$dot-pitch}' height='#{$dot-pitch}' fill='url(#g)'/></pattern></defs><rect width='100%' height='100%' fill='url(#p)'/></svg>"
   );
 }
 
@@ -116,8 +118,10 @@ $dot-profile: (0 0.5) (0.354 0.55) (0.53 0.64) (0.707 0.82) (0.85 1) (1 1);
   // blur rounds the dots (ink surface tension); contrast pushes tones apart
   // into dots. 999 would be a hard threshold, pure ink or paper. A moderate
   // value leaves a grey ramp on every dot edge and prints light areas as grey
-  // dots rather than black, which reads as a few shades of grey.
-  filter: blur(0.6px) contrast($dot-contrast);
+  // dots rather than black, which reads as a few shades of grey. Ink-bleed is
+  // chained last so the dots get the same edge roughness as the type.
+  filter: blur(0.6px) contrast($dot-contrast) url("#ink-bleed");
+  will-change: transform;
 
   img {
     opacity: 0.52;
@@ -132,6 +136,10 @@ $dot-profile: (0 0.5) (0.354 0.55) (0.53 0.64) (0.707 0.82) (0.85 1) (1 1);
     background-image: ink-screen(#000, 45);
     background-size: 100% 100%;
     mix-blend-mode: multiply;
+
+    @include mobile {
+      background-image: ink-screen(#000, 45, $pitch-mobile);
+    }
   }
 
 }
@@ -150,7 +158,8 @@ $dot-profile: (0 0.5) (0.354 0.55) (0.53 0.64) (0.707 0.82) (0.85 1) (1 1);
 // software filter once and only composites while scrolling. Without it, every
 // repaint re-runs the filter over the whole block.
 header,
-section {
+section > *,
+body > footer {
   filter: url("#ink-bleed");
   will-change: transform;
 }

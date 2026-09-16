@@ -5,7 +5,7 @@
       "label": "Watch SCSS",
       "type": "npm",
       "script": "watch:css",
-      "detail": "Recompile css/master.scss on save",
+      "detail": "Recompile all css/*.scss on save",
       "isBackground": true,
       "problemMatcher": {
         "owner": "sass",
@@ -36,7 +36,7 @@
       "label": "Compile SCSS",
       "type": "npm",
       "script": "build:css",
-      "detail": "Compile css/master.scss once",
+      "detail": "Compile all css/*.scss once",
       "problemMatcher": [],
       "group": "build",
       "presentation": {

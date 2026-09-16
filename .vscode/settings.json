@@ -1,0 +1,25 @@
+{
+  "livePreview.autoRefreshPreview": "On Changes to Saved Files",
+  "livePreview.previewDebounceDelay": 300,
+  "livePreview.httpHeaders": {
+    "Accept-Ranges": "bytes",
+    "Cache-Control": "no-store"
+  },
+
+  "stylelint.enable": true,
+  "stylelint.validate": ["scss", "css"],
+  "stylelint.snippet": ["scss", "css"],
+  "stylelint.run": "onSave",
+  "stylelint.stylelintPath": "",
+  "stylelint.configBasedir": "",
+  "stylelint.lintFiles.glob": "**/*.{css,scss}",
+  "css.validate": false,
+  "scss.validate": false,
+
+  "htmlhint.enable": true,
+  "htmlhint.documentSelector": ["html"],
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit"
+  }
+}

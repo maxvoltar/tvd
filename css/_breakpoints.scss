@@ -1,0 +1,28 @@
+// Desktop is the unwrapped default. Use `desktop` for values unique to that
+// range; `tablet` / `mobile` for those; `until-desktop` for both of the latter.
+$bp-tablet: 640px;
+$bp-desktop: 1024px;
+
+@mixin tablet {
+  @media (width > $bp-tablet) and (width <= $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (width <= $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (width > $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin until-desktop {
+  @media (width <= $bp-desktop) {
+    @content;
+  }
+}
