@@ -133,7 +133,7 @@ img {
 
 hr {
   border: none;
-  border-top: 2px solid var(--text);
+  border-top: 2px dotted var(--text);
 }
 @media (width <= 640px) {
   hr {
@@ -313,10 +313,21 @@ section .timeline > li {
   grid-template-columns: 1fr 1fr;
   column-gap: 2.5rem;
   align-items: start;
-  margin-bottom: 1.5rem;
+  padding: 1.5rem 0;
+  border-top: 2px dotted var(--text);
+}
+@media (width <= 640px) {
+  section .timeline > li {
+    padding: 1rem 0;
+  }
 }
 section .timeline > li:last-child {
   margin-bottom: 0;
+  padding-bottom: 0;
+}
+section .timeline > li:first-child {
+  padding-top: 0;
+  border-top: none;
 }
 section .timeline > li a {
   font-weight: 700;
@@ -337,6 +348,12 @@ section .timeline > li ul {
   padding-left: 0;
   font-size: 0.833em;
   list-style: none;
+}
+section .timeline > li ul li {
+  display: inline;
+}
+section .timeline > li ul li:not(:last-child)::after {
+  content: ", ";
 }
 @media (width <= 640px) {
   section .timeline > li ul li {

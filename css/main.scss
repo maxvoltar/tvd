@@ -78,7 +78,7 @@ img {
 
 hr {
   border: none;
-  border-top: 2px solid var(--text);
+  border-top: 2px dotted var(--text);
 
   @include mobile {
     display: none;
@@ -92,7 +92,7 @@ body > footer {
 }
 
 .hero {
-  // Mask lives on the figure so the halftone overlay gets clipped with the photo.
+  // Mask lives on .hero (same element as the newsprint filter).
   mask-image: url("../img/mask.svg");
   mask-repeat: no-repeat;
   mask-position: center;
@@ -270,10 +270,22 @@ section {
       grid-template-columns: 1fr 1fr;
       column-gap: 2.5rem;
       align-items: start;
-      margin-bottom: 1.5rem;
+      // margin-bottom: 1.5rem;
+      padding: 1.5rem 0;
+      border-top: 2px dotted var(--text);
+
+      @include mobile {
+        padding: 1rem 0;
+      }
 
       &:last-child {
         margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      &:first-child {
+        padding-top: 0;
+        border-top: none;
       }
 
       a {
@@ -299,6 +311,16 @@ section {
         padding-left: 0;
         font-size: 0.833em;
         list-style: none;
+
+        li {
+          display: inline;
+
+          &:not(:last-child) {
+            &::after {
+              content: ", ";
+            }
+          }
+        }
 
         @include mobile {
           li {
