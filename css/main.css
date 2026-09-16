@@ -42,7 +42,7 @@ body > * {
 }
 
 header,
-section > *,
+section,
 body > footer {
   filter: url("#ink-bleed");
   will-change: transform;
@@ -75,7 +75,9 @@ body > footer {
 }
 
 body {
+  max-width: 64rem;
   min-height: 100vh;
+  margin: 0 auto;
   scroll-behavior: smooth;
   font-family: proxima-soft-condensed, sans-serif;
   font-weight: 500;
@@ -111,6 +113,11 @@ hr {
   border: none;
   border-top: 2px solid var(--text);
 }
+@media (width <= 640px) {
+  hr {
+    display: none;
+  }
+}
 
 header,
 main,
@@ -144,6 +151,7 @@ header {
   justify-content: center;
 }
 header h1 {
+  margin-top: -1.75rem;
   font-family: proxima-soft-extra-condensed, sans-serif;
   font-size: calc((100vw - 5rem) / 5.4);
   font-weight: 700;
@@ -157,22 +165,29 @@ header h1 {
 @media (width <= 1024px) {
   header h1 {
     -webkit-text-stroke-width: 2px;
+    margin-top: -1rem;
   }
 }
 @media (width <= 640px) {
   header h1 {
+    margin-top: 0;
     font-size: calc((100vw - 2rem) / 5.6);
   }
 }
 
 main {
-  max-width: 90rem;
-  margin: 0 auto;
   padding: 2.5rem;
+  margin-top: -2.5rem;
+}
+@media (width <= 1024px) {
+  main {
+    margin-top: -2.5rem;
+  }
 }
 @media (width <= 640px) {
   main {
     padding: 1rem;
+    margin-top: -0.5rem;
   }
 }
 
@@ -181,21 +196,20 @@ section {
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem 2.5rem;
   padding: 2.5rem 0;
-  border-top: 2px dashed var(--text);
+  border-top: 2px solid var(--text);
 }
 @media (width <= 640px) {
   section {
-    padding: 1rem 0;
+    padding: 1.5rem 0;
   }
-}
-section:first-child {
-  padding-top: 0;
-  border-top: none;
 }
 section:last-child {
   margin-bottom: 0;
 }
 section h2 {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   grid-column: 1;
   align-self: start;
   margin-bottom: 0.5rem;
@@ -204,16 +218,23 @@ section h2 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0;
+  text-box: trim-both cap alphabetic;
 }
-@media (width > 1024px) {
+section h2 span {
+  display: inline-block;
+  padding: 0 0.5rem;
+  color: var(--background);
+  background-color: var(--text);
+}
+@media (width > 640px) and (width <= 1024px) {
   section h2 {
-    position: sticky;
-    top: 0;
-    text-box: trim-both cap alphabetic;
+    top: 1rem;
+    margin-bottom: 1.5rem;
   }
 }
 @media (width <= 640px) {
   section h2 {
+    top: 1rem;
     font-size: 1.5em;
   }
 }
@@ -250,6 +271,10 @@ section cite {
 section .intro p {
   margin-bottom: 1rem;
 }
+section .intro cite {
+  display: block;
+  margin-top: 0.75rem;
+}
 section .intro footer {
   margin-top: 0.5rem;
 }
@@ -285,8 +310,8 @@ section .timeline > li strong {
 }
 section .timeline > li ul {
   padding-left: 0;
-  list-style: none;
   font-size: 0.833em;
+  list-style: none;
 }
 @media (width <= 640px) {
   section .timeline > li ul li {
