@@ -42,9 +42,15 @@ body > * {
 }
 
 header,
-section,
+section > :not(h2),
+section h2 span,
 body > footer {
   filter: url("#ink-bleed");
+  will-change: transform;
+}
+
+section::before {
+  filter: url("#ink-bleed-rule");
   will-change: transform;
 }
 
@@ -89,6 +95,23 @@ body {
   text-rendering: optimizelegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+body > footer {
+  padding-top: 2rem;
+  margin: -3rem 2.5rem 2.5rem;
+  text-align: right;
+  border-top: 2px solid var(--text);
+}
+@media (width <= 1024px) {
+  body > footer {
+    padding-top: 1.5rem;
+  }
+}
+@media (width <= 640px) {
+  body > footer {
+    padding-top: 1rem;
+    margin: -1rem 1rem 1rem;
+  }
 }
 
 a {
@@ -192,11 +215,21 @@ main {
 }
 
 section {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem 2.5rem;
   padding: 2.5rem 0;
-  border-top: 2px solid var(--text);
+}
+section::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  pointer-events: none;
+  content: "";
+  background-color: var(--text);
 }
 @media (width <= 640px) {
   section {
@@ -327,29 +360,33 @@ section .timeline > li ul a {
   }
 }
 section .press {
+  columns: unset;
   padding-left: 0;
   list-style: none;
 }
 section .press li {
   display: grid;
-  grid-template-columns: 4rem 1fr;
-  column-gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2.5rem;
+  align-items: start;
   margin-bottom: 0.75rem;
-  break-inside: avoid;
+}
+section .press li:last-child {
+  margin-bottom: 0;
 }
 section .press time {
-  grid-column: 1;
   font-size: 0.833em;
-  opacity: 0.5;
-}
-section .press a {
-  grid-column: 2;
-}
-section .press cite {
-  grid-column: 2;
 }
 section .press cite::before {
-  content: "— ";
+  margin: 0 0.5rem;
+  font-weight: 500;
+  content: "•";
+}
+@media (width <= 640px) {
+  section .press li {
+    grid-template-columns: 1fr;
+    row-gap: 0.125rem;
+  }
 }
 section .socials {
   display: flex;
@@ -359,7 +396,6 @@ section .socials {
 section .socials li:not(:last-child)::after {
   margin-left: 0.5rem;
   content: "•";
-  opacity: 0.5;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -49,31 +49,27 @@
           <feFuncA type="linear" slope="1.7" intercept="-0.12" />
         </feComponentTransfer>
       </filter>
+      <!-- Same bleed, but the region is relative to a 2px-tall rule: 2% of 2px
+           would clip the displacement, so the Y overflow is in multiples of the
+           hairline instead. -->
+      <filter id="ink-bleed-rule" x="-1%" y="-400%" width="102%" height="900%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="5" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="rough" />
+        <feGaussianBlur in="rough" stdDeviation="0.3" result="soft" />
+        <feComponentTransfer in="soft">
+          <feFuncA type="linear" slope="1.7" intercept="-0.12" />
+        </feComponentTransfer>
+      </filter>
     </svg>
     <figure class="hero">
       <img
       src="img/cover.jpg"
       alt="Tim Van Damme speaking at Figma Config 2025"
       />
-      <!-- <figcaption>
-        Presenting at
-        <a href="https://www.figma.com/config">Figma’s Config</a> 2025
-      </figcaption> -->
     </figure>
     
     <header>
       <h1>Tim Van Damme</h1>
-      <!-- <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#side-projects">Side projects</a></li>
-          <li><a href="#press">Press</a></li>
-          <li><a href="#talks">Talks</a></li>
-          <li><a href="#socials">Socials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav> -->
     </header>
 
     <main>
@@ -208,59 +204,81 @@
         <h2 id="press"><span>Press</span></h2>
         <ul class="press">
           <li>
-            <time datetime="2024">2024</time>
-            <a href="https://apbc.be/stories/creatives-creatives-rizon-parein-x-tim-van-damme">Creatives on Creatives: Rizon Parein × Tim Van Damme</a>
-            <cite>APBC (Dutch)</cite>
+            <a href="https://apbc.be/stories/creatives-creatives-rizon-parein-x-tim-van-damme">Creatives on Creatives (Dutch)</a>
+            <div>
+              <time datetime="2024">2024</time>
+              <cite>APBC</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2023">2023</time>
             <a href="https://blog.cottonbureau.com/feature-friday-004-tim-van-damme/">Feature Friday</a>
-            <cite>Cotton Bureau</cite>
+            <div>
+              <time datetime="2023">2023</time>
+              <cite>Cotton Bureau</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2019">2019</time>
             <a href="https://dribbble.com/stories/2019/02/05/dribbble-interview-tim-van-damme-shares-a-simple-solution-to-prioritize-features-in-your-work">Dribbble Interview</a>
-            <cite>Dribbble</cite>
+            <div>
+              <time datetime="2019">2019</time>
+              <cite>Dribbble</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2018">2018</time>
             <a href="https://layout.fm/episodes/104">iOS 7 Was Leggings</a>
-            <cite>Layout</cite>
+            <div>
+              <time datetime="2018">2018</time>
+              <cite>Layout.fm</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2016">2016</time>
             <a href="https://solomon.io/tim-van-damme-founder-of-abstract/">Founder of Abstract</a>
-            <cite>Sam Solomon</cite>
+            <div>
+              <time datetime="2016">2016</time>
+              <cite>Sam Solomon</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2016">2016</time>
             <a href="https://layout.fm/episodes/23">Stop Calling the iPhone a Phone</a>
-            <cite>Layout</cite>
+            <div>
+              <time datetime="2016">2016</time>
+              <cite>Layout.fm</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2014">2014</time>
             <a href="https://zurb.com/soapbox/tim-van-damme-s-soapbox">The Right Look and Feel</a>
-            <cite>ZURB Soapbox</cite>
+            <div>
+              <time datetime="2014">2014</time>
+              <cite>ZURB Soapbox</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2014">2014</time>
             <a href="https://www.creativebloq.com/netmag/dropboxs-tim-van-damme-working-talented-people-21410855">Working with talented people</a>
-            <cite>Creative Bloq / net Awards</cite>
+            <div>
+              <time datetime="2014">2014</time>
+              <cite>Creative Bloq</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2014">2014</time>
             <a href="https://thegreatdiscontent.com/interview/tim-van-damme/">Tim Van Damme</a>
-            <cite>The Great Discontent</cite>
+            <div>
+              <time datetime="2014">2014</time>
+              <cite>The Great Discontent</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2013">2013</time>
             <a href="https://thenextweb.com/news/inside-the-mind-of-a-designer-meet-instagrams-tim-van-damme">Inside the mind of a designer</a>
-            <cite>The Next Web</cite>
+            <div>
+              <time datetime="2013">2013</time>
+              <cite>The Next Web</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2010">2010</time>
             <a href="https://zeldman.com/2010/03/04/van-damme-thats-good-design/">Van Damme, that’s good design</a>
-            <cite>Jeffrey Zeldman</cite>
+            <div>
+              <time datetime="2010">2010</time>
+              <cite>Jeffrey Zeldman</cite>
+            </div>
           </li>
         </ul>
       </section>
@@ -269,24 +287,25 @@
         <h2 id="talks"><span>Talks</span></h2>
         <ul class="press">
           <li>
-            <time datetime="2025">2025</time>
             <a href="https://www.youtube.com/watch?v=bCZ5_orYuyk">Expressive design and illustration in Figma Draw</a>
-            <cite>Config</cite>
+            <div>
+              <time datetime="2025">2025</time>
+              <cite>Config</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2025">2025</time>
             <a href="https://www.youtube.com/watch?v=A5LTtk3rr7Q">Designing Figma’s UI3 icons</a>
-            <cite>Deep Dive with Jay</cite>
+            <div>
+              <time datetime="2025">2025</time>
+              <cite>Deep Dive with Jay</cite>
+            </div>
           </li>
           <li>
-            <time datetime="2024">2024</time>
-            <a href="https://www.youtube.com/watch?v=yJQYBjto41s">Intuition, simplicity, and the future of design</a>
-            <cite>Dylan Field at Config</cite>
-          </li>
-          <li>
-            <time datetime="2019">2019</time>
-            <a href="https://fs-abstract-ba3e9ada2dfba-fd2bf1122bd20.webflow.io/blog/design-career-growth">Change is Constant</a>
-            <cite>Loupe</cite>
+            <a href="https://www.youtube.com/watch?v=T8l2P7w9y58">Change is Constant</a>
+            <div>
+              <time datetime="2019">2019</time>
+              <cite>Loupe</cite>
+            </div>
           </li>
         </ul>
       </section>
@@ -294,19 +313,12 @@
       <section>
         <h2 id="socials"><span>Socials</span></h2>
         <ul class="socials">
-          <li><a rel="me" href="https://twitter.com/maxvoltar">Twitter</a></li>
+          <li><a rel="me" href="https://twitter.com/maxvoltar">Twitter/X</a></li>
           <li><a rel="me" href="https://instagram.com/maxvoltar">Instagram</a></li>
           <li><a rel="me" href="https://bsky.app/profile/maxvoltar.be">Bluesky</a></li>
           <li><a rel="me" href="https://www.threads.com/@maxvoltar">Threads</a></li>
           <li><a rel="me" href="https://www.linkedin.com/in/tim-van-damme-1a11756b">LinkedIn</a></li>
         </ul>
-      </section>
-
-      <section>
-        <h2 id="contact"><span>Contact</span></h2>
-        <p>
-          <a rel="me" class="u-email" href="mailto:tim@maxvoltar.be">tim@maxvoltar.be</a>
-        </p>
       </section>
     </main>
     <footer>

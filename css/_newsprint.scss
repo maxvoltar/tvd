@@ -153,14 +153,27 @@ $dot-profile: (0 0.5) (0.354 0.55) (0.53 0.64) (0.707 0.82) (0.85 1) (1 1);
 // Applied per block rather than to <body> so no single huge layer is
 // rasterized (Safari drops filters on very large surfaces). Works on alpha
 // only, so it is colour-agnostic and fine in dark mode.
+//
+// WebKit composites `position: sticky` descendants onto their own layer, which
+// never receives an ancestor filter. So the filter is not on `section` itself:
+// non-sticky children get it, and the title chip (inside the sticky h2) gets
+// it on its own. Sticky stays on the h2; the chip is what actually looks like
+// ink. Section rules are a separate 2px layer so they can use a filter region
+// tall enough to roughen a hairline.
 
 // will-change promotes each block to its own layer, so WebKit runs the
 // software filter once and only composites while scrolling. Without it, every
 // repaint re-runs the filter over the whole block.
 header,
-section,
+section > :not(h2),
+section h2 span,
 body > footer {
   filter: url("#ink-bleed");
+  will-change: transform;
+}
+
+section::before {
+  filter: url("#ink-bleed-rule");
   will-change: transform;
 }
 
