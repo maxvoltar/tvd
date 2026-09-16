@@ -1,3 +1,5 @@
+@use "newsprint";
+
 // @mixin dark-mode {
 //   @media (prefers-color-scheme: dark) {
 //     @content;
@@ -6,11 +8,11 @@
 
 :root {
   // Fluid root size: 16px @ 375px → 24px @ 1440px. Everything else in rem/em follows.
-  font-size: clamp(16px, calc(16px + (24 - 16) * (100vw - 375px) / (1440 - 375)), 24px);
+  font-size: clamp(20px, calc(20px + (24 - 20) * (100vw - 375px) / (1440 - 375)), 24px);
   color-scheme: light dark;
 
   --background: light-dark(#eee, #111);
-  --text: light-dark(#111, #eee);
+  --text: light-dark(#333, #ccc);
 }
 
 * {
@@ -18,13 +20,19 @@
   padding: 0;
   margin: 0;
   font-size: 1em;
+  font-style: normal;
   font-weight: inherit;
-  line-height: 1.5em;
+  line-height: 1.333em;
   color: inherit;
   text-decoration: none;
   list-style: none;
 
   // text-box: trim-both cap alphabetic;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid var(--text);
 }
 
 img {
@@ -35,70 +43,116 @@ img {
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
-  font-family: "kepler-3-subhead", serif;
+  font-family: proxima-soft-condensed, sans-serif;
+  font-weight: 500;
   font-feature-settings: "liga" on;
   color: var(--text);
+  letter-spacing: -0.01em;
   text-wrap: pretty;
   background-color: var(--background);
-  text-rendering: optimizelegibility;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+
+  // text-rendering: optimizelegibility;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: antialiased;
+}
+
+header {
+  padding: 0 2.5rem .5rem;
+  margin-top: -2rem;
+  transform: skewY(-4.75deg);
+
+  nav {
+    font-family: proxima-soft-extra-condensed, sans-serif;
+    font-size: calc((100vw - 5rem) / 24);
+
+    // font-weight: 700;
+    text-transform: uppercase;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: -1rem;
+
+      li {
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+h1 {
+  font-family: proxima-soft-extra-condensed, sans-serif;
+
+  // “TIM VAN DAMME” is ~5.35em wide in this face; scale to 100vw − padding.
+  font-size: calc((100vw - 5rem) / 5.35);
+  font-weight: 700;
+  color: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  white-space: nowrap;
+  -webkit-text-stroke: 4px var(--text);
 }
 
 .hero {
+  // Mask lives on the figure so the halftone overlay gets clipped with the photo.
+  mask-image: url("../img/mask.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: cover;
+
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
     filter: grayscale(1);
-    mask-image: url("../img/mask.svg");
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: cover;
   }
 
   figcaption {
-    padding-right: 4.5rem;
-    margin-top: -1.5rem;
+    padding-right: 2.5rem;
+    margin-top: -1rem;
     font-size: 0.833em;
-    font-style: italic;
+    font-weight: 700;
     text-align: right;
-    opacity: 0.5;
   }
 }
 
 a {
+  position: relative;
   text-decoration: underline;
-  text-decoration-thickness: 0.05em;
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
 
   &:hover,
   &:focus {
-    opacity: 0.75;
+    text-decoration-thickness: 3px;
   }
 
   &:active {
-    opacity: 0.5;
+    top: 1px;
   }
 }
 
 main {
   max-width: 90rem;
-  padding: 2.5rem;
   margin: 0 auto;
+  transform: skewY(-4.75deg);
 }
 
 section {
   display: grid;
   gap: 0.5rem 2.5rem;
-  padding: 2.5rem 0;
-  border-top: 1px solid var(--text);
+  padding: 2.5rem;
+  border-top: 2px solid var(--text);
 
-  &:first-child {
-    padding-top: 0;
-    border-top: none;
-  }
+  // &:first-child {
+  //   padding-top: 0;
+  //   border-top: none;
+  // }
 
   &:last-child {
     padding-bottom: 0;
@@ -107,13 +161,13 @@ section {
   @media (width > 640px) {
     grid-template-columns: repeat(2, 1fr);
 
-    h1 {
+    h2 {
       grid-column: 1 / -1;
     }
 
-    .content {
-      grid-column: 1 / -1;
+    > :not(h2) {
       columns: 2;
+      grid-column: 1 / -1;
       column-gap: 2.5rem;
     }
   }
@@ -121,20 +175,24 @@ section {
   @media (width > 1024px) {
     grid-template-columns: repeat(3, 1fr);
 
-    h1 {
+    h2 {
       grid-column: 1;
     }
 
-    .content {
-      grid-column: 2 / -1;
+    > :not(h2) {
       columns: 2;
+      grid-column: 2 / -1;
       column-gap: 2.5rem;
     }
   }
 
-  h1 {
+  h2 {
     margin-bottom: 0.5rem;
+    font-family: proxima-soft-extra-condensed, proxima-soft, sans-serif;
     font-size: 2em;
+    font-weight: 700; 
+    text-transform: uppercase;
+    letter-spacing: 0;
   }
 
   p {
@@ -143,22 +201,22 @@ section {
 
   cite {
     font-size: 0.833em;
-    opacity: 0.5;
+    font-weight: 700;
   }
 
   .intro {
     p {
       margin-bottom: 1rem;
 
-      &:first-child {
-        &::first-letter {
-          float: left;
-          margin-right: 0.6rem;
-          font-size: 3em;
-          font-style: small-caps;
-          line-height: 1;
-        }
-      }
+      // &:first-child {
+      //   &::first-letter {
+      //     float: left;
+      //     margin-right: 0.6rem;
+      //     font-size: 3em;
+      //     font-style: small-caps;
+      //     line-height: 1;
+      //   }
+      // }
     }
 
     footer {

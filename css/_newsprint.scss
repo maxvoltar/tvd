@@ -1,0 +1,162 @@
+// Newsprint treatment: monochrome halftone on the hero, ink bleed on type.
+
+@use "sass:color";
+@use "sass:list";
+@use "sass:math";
+@use "sass:string";
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+@function str-replace($string, $search, $replace) {
+  $index: string.index($string, $search);
+
+  @if $index {
+    $rest: string.slice($string, $index + string.length($search));
+
+    @return string.slice($string, 1, $index - 1) + $replace + str-replace($rest, $search, $replace);
+  }
+
+  @return $string;
+}
+
+// Turn readable inline SVG into a CSS data URI. Use single quotes in the SVG.
+@function svg-url($svg) {
+  $svg: str-replace($svg, "<", "%3C");
+  $svg: str-replace($svg, ">", "%3E");
+  $svg: str-replace($svg, "#", "%23");
+
+  @return url("data:image/svg+xml,#{$svg}");
+}
+
+@function rgb-string($color) {
+  $r: math.round(color.channel($color, "red", $space: rgb));
+  $g: math.round(color.channel($color, "green", $space: rgb));
+  $b: math.round(color.channel($color, "blue", $space: rgb));
+
+  @return "rgb(#{$r},#{$g},#{$b})";
+}
+
+// ---------------------------------------------------------------------------
+// Paper
+// ---------------------------------------------------------------------------
+
+// Two seamless 1024px raster tiles generated with ImageMagick (random noise
+// filtered with wrap-around edges, then shaded as lit relief): an off-white
+// sheet and an off-black one. Shown at 512px so they stay crisp on 2x screens.
+// Everything on the page blends onto the sheet: multiply on light paper so
+// ink sinks in, screen on dark paper so light sits on it. That also folds the
+// hero's white paper into the background in both modes.
+body {
+  background-image: url("../img/paper-light.jpg");
+  background-size: 512px 512px;
+
+  @media (prefers-color-scheme: dark) {
+    background-image: url("../img/paper-dark.jpg");
+  }
+
+  > * {
+    mix-blend-mode: multiply;
+
+    @media (prefers-color-scheme: dark) {
+      mix-blend-mode: screen;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Halftone hero
+// ---------------------------------------------------------------------------
+
+// The photo is multiplied with a soft dot screen, then the whole figure goes
+// through an extreme contrast() so every pixel snaps to ink or paper. Dark
+// areas keep big dots, light areas keep small ones.
+// See https://leanrada.com/notes/pure-css-halftone/
+
+// Distance between dot centres, in CSS px. Coarse on purpose: newsprint.
+$pitch: 3;
+
+// How hard tones are pushed into dots. 999 is a pure threshold.
+$dot-contrast: 3.5;
+
+// Dot profile, as (gradient offset, ink strength) pairs from the cell centre
+// (offset 0) to the cell corner (offset 1). The photo is shown at just over
+// half strength over white, so its tones land in 0.48–1, and after multiplying
+// with this profile the contrast() threshold at 0.5 turns a tone into a dot
+// whose *area* grows linearly with darkness. Centre strength 0.5 keeps pure
+// white dot-free; true black stays under the threshold and prints solid.
+$dot-profile: (0 0.5) (0.354 0.55) (0.53 0.64) (0.707 0.82) (0.85 1) (1 1);
+
+@function dot-stops($ink) {
+  $stops: "";
+
+  @each $stop in $dot-profile {
+    $offset: list.nth($stop, 1);
+    $strength: list.nth($stop, 2);
+    $stops: $stops + "<stop offset='#{$offset}' stop-color='#{rgb-string(color.mix(#fff, $ink, $strength * 100%))}'/>";
+  }
+
+  @return $stops;
+}
+
+// One ink screen: a grid of soft dots rotated to the screen angle. The SVG has
+// no intrinsic size, so it fills the element and stays vector-crisp at any DPI.
+@function ink-screen($ink, $angle) {
+  @return svg-url(
+    "<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><defs><radialGradient id='g' r='0.7071'>#{dot-stops($ink)}</radialGradient><pattern id='p' width='#{$pitch}' height='#{$pitch}' patternUnits='userSpaceOnUse' patternTransform='rotate(#{$angle})'><rect width='#{$pitch}' height='#{$pitch}' fill='url(#g)'/></pattern></defs><rect width='100%' height='100%' fill='url(#p)'/></svg>"
+  );
+}
+
+.hero {
+  position: relative;
+  background: #fff;
+
+
+  // blur rounds the dots (ink surface tension); contrast pushes tones apart
+  // into dots. 999 would be a hard threshold, pure ink or paper. A moderate
+  // value leaves a grey ramp on every dot edge and prints light areas as grey
+  // dots rather than black, which reads as a few shades of grey.
+  filter: blur(0.6px) contrast($dot-contrast);
+
+  img {
+    opacity: 0.52;
+  }
+
+  // Classic 45° black screen.
+  &::before {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background-image: ink-screen(#000, 45);
+    background-size: 100% 100%;
+    mix-blend-mode: multiply;
+  }
+
+}
+
+// ---------------------------------------------------------------------------
+// Ink bleed
+// ---------------------------------------------------------------------------
+
+// Type and rules soak into the paper a little: edges roughened by noise, then a
+// touch of spread. The filter itself is the inline <svg> in index.html.
+// Applied per block rather than to <body> so no single huge layer is
+// rasterized (Safari drops filters on very large surfaces). Works on alpha
+// only, so it is colour-agnostic and fine in dark mode.
+
+// will-change promotes each block to its own layer, so WebKit runs the
+// software filter once and only composites while scrolling. Without it, every
+// repaint re-runs the filter over the whole block.
+header,
+section {
+  filter: url("#ink-bleed");
+  will-change: transform;
+}
+
+.filter-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
