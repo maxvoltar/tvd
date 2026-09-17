@@ -2,45 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Tim Van Damme</title>
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1"
-    />
+    <title>Tim Van Damme (Max Voltar) — Product Designer at Figma</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Tim Van Damme" />
     <meta
       name="description"
-      content="Personal homepage of Tim Van Damme, designer."
+      content="Tim Van Damme (aka Max Voltar) is a product designer at Figma. He owns the icon system and helped shape UI3 — previously Abstract, Dropbox, Instagram, and Gowalla."
     />
+    <link rel="canonical" href="https://timvandamme.com/" />
     <meta name="theme-color" content="#303239" />
+
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tim Van Damme" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@maxvoltar" />
-    <meta name="twitter:creator" content="@maxvoltar" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://timvandamme.com/" />
     <meta
-      name="twitter:url"
-      property="og:url"
-      content="https://timvandamme.com"
+      property="og:title"
+      content="Tim Van Damme (Max Voltar) — Product Designer at Figma"
     />
-    <meta name="twitter:image:width" content="2142" />
-    <meta name="twitter:image:height" content="1288" />
     <meta
-      name="twitter:image"
+      property="og:description"
+      content="Tim Van Damme (aka Max Voltar) is a product designer at Figma. He owns the icon system and helped shape UI3 — previously Abstract, Dropbox, Instagram, and Gowalla."
+    />
+    <meta
       property="og:image"
       content="https://timvandamme.com/img/cover.jpg"
     />
-    <meta name="twitter:title" property="og:title" content="Tim Van Damme" />
+    <meta property="og:image:width" content="2142" />
+    <meta property="og:image:height" content="1288" />
+    <meta
+      property="og:image:alt"
+      content="Tim Van Damme speaking at Figma Config 2025"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@maxvoltar" />
+    <meta name="twitter:creator" content="@maxvoltar" />
+    <meta name="twitter:url" content="https://timvandamme.com/" />
+    <meta
+      name="twitter:title"
+      content="Tim Van Damme (Max Voltar) — Product Designer at Figma"
+    />
     <meta
       name="twitter:description"
-      property="og:description"
-      content="Personal homepage of Tim Van Damme, product designer."
+      content="Tim Van Damme (aka Max Voltar) is a product designer at Figma. He owns the icon system and helped shape UI3 — previously Abstract, Dropbox, Instagram, and Gowalla."
     />
+    <meta
+      name="twitter:image"
+      content="https://timvandamme.com/img/cover.jpg"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Tim Van Damme",
+        "alternateName": ["Max Voltar", "maxvoltar"],
+        "url": "https://timvandamme.com/",
+        "image": "https://timvandamme.com/img/cover.jpg",
+        "jobTitle": "Product designer",
+        "description": "Product designer at Figma. Owns the icon system and helped shape UI3.",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Figma",
+          "url": "https://www.figma.com/"
+        },
+        "sameAs": [
+          "https://maxvoltar.com/",
+          "https://twitter.com/maxvoltar",
+          "https://instagram.com/maxvoltar",
+          "https://bsky.app/profile/maxvoltar.be",
+          "https://www.threads.com/@maxvoltar",
+          "https://www.linkedin.com/in/tim-van-damme-1a11756b"
+        ]
+      }
+    </script>
+
     <link rel="stylesheet" href="https://use.typekit.net/pzo1zwb.css" />
     <link rel="stylesheet" href="css/main.css" media="screen" />
   </head>
   <body>
-    <svg class="filter-defs" aria-hidden="true">
+    <svg class="filter-defs" aria-hidden="true" focusable="false">
       <filter id="ink-bleed" x="-2%" y="-2%" width="104%" height="104%" color-interpolation-filters="sRGB">
         <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="5" result="noise" />
         <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="rough" />
@@ -61,19 +103,22 @@
         </feComponentTransfer>
       </filter>
     </svg>
+
     <figure class="hero">
       <img
-      src="img/cover.jpg"
-      alt="Tim Van Damme speaking at Figma Config 2025"
+        src="img/cover.jpg"
+        width="2142"
+        height="1288"
+        alt="Tim Van Damme speaking at Figma Config 2025"
       />
     </figure>
-    
+
     <header>
       <h1>Tim Van Damme</h1>
     </header>
 
     <main>
-      <section>
+      <section aria-labelledby="about">
         <h2 id="about"><span>About</span></h2>
         <blockquote class="intro">
           <p>
@@ -92,7 +137,7 @@
             reputation for making the people around him better without needing
             credit for it.
           </p>
-          <hr>
+          <hr />
           <footer>
             <cite>
               Synthesized from colleagues’ notes; my impostor syndrome would
@@ -102,13 +147,13 @@
         </blockquote>
       </section>
 
-      <section>
+      <section aria-labelledby="work">
         <h2 id="work"><span>Work</span></h2>
         <ul class="timeline">
           <li>
             <div>
               <a href="https://figma.com/"><strong>Figma</strong></a>
-              <time>2023–Current</time>
+              <time datetime="2023">2023–Current</time>
               <span class="role">Software designer</span>
             </div>
             <ul>
@@ -120,7 +165,7 @@
           <li>
             <div>
               <strong>Gowalla <abbr title="Defunct">†</abbr></strong>
-              <time>2021–2023</time>
+              <time datetime="2021">2021–2023</time>
               <span class="role">Software designer</span>
             </div>
             <ul>
@@ -130,7 +175,7 @@
           <li>
             <div>
               <strong>Abstract <abbr title="Defunct">†</abbr></strong>
-              <time>2016–2021</time>
+              <time datetime="2016">2016–2021</time>
               <span class="role">Software designer, first employee</span>
             </div>
             <ul>
@@ -139,13 +184,13 @@
               <li><a href="https://fs-abstract-ba3e9ada2dfba-fd2bf1122bd20.webflow.io/blog/sketch-libraries-abstract-per-project-libraries">Sketch Libraries</a></li>
               <li><a href="https://fs-abstract-ba3e9ada2dfba-fd2bf1122bd20.webflow.io/blog/compare-mode">Compare mode</a></li>
               <li><a href="https://fs-abstract-ba3e9ada2dfba-fd2bf1122bd20.webflow.io/blog/dark-mode">Dark mode</a></li>
-              <li>…</li>
+              <li aria-hidden="true">…</li>
             </ul>
           </li>
           <li>
             <div>
               <a href="https://dropbox.com/"><strong>Dropbox</strong></a>
-              <time>2013–2015</time>
+              <time datetime="2013">2013–2015</time>
               <span class="role">Software designer</span>
             </div>
             <ul>
@@ -159,7 +204,7 @@
           <li>
             <div>
               <a href="https://instagram.com/"><strong>Instagram</strong></a>
-              <time>2012–2013</time>
+              <time datetime="2012">2012–2013</time>
               <span class="role">Software designer</span>
             </div>
             <ul>
@@ -173,7 +218,7 @@
           <li>
             <div>
               <strong>Gowalla <abbr title="Defunct">†</abbr></strong>
-              <time>2010–2011</time>
+              <time datetime="2010">2010–2011</time>
               <span class="role">Software designer</span>
             </div>
             <ul>
@@ -184,13 +229,13 @@
         </ul>
       </section>
 
-      <section>
+      <section aria-labelledby="side-projects">
         <h2 id="side-projects"><span>Side projects</span></h2>
         <ul class="timeline">
           <li>
             <div>
               <a href="https://mvkb.com/"><strong>MVKB</strong></a>
-              <time>2021–Current</time>
+              <time datetime="2021">2021–Current</time>
               <span class="role">Founder</span>
             </div>
             <ul>
@@ -200,7 +245,7 @@
         </ul>
       </section>
 
-      <section>
+      <section aria-labelledby="press">
         <h2 id="press"><span>Press</span></h2>
         <ul class="press">
           <li>
@@ -283,7 +328,7 @@
         </ul>
       </section>
 
-      <section>
+      <section aria-labelledby="talks">
         <h2 id="talks"><span>Talks</span></h2>
         <ul class="press">
           <li>
@@ -310,7 +355,7 @@
         </ul>
       </section>
 
-      <section>
+      <section aria-labelledby="socials">
         <h2 id="socials"><span>Socials</span></h2>
         <ul class="socials">
           <li><a rel="me" href="https://twitter.com/maxvoltar">Twitter/X</a></li>
@@ -321,6 +366,7 @@
         </ul>
       </section>
     </main>
+
     <footer>
       <p>© Tim Van Damme 2026</p>
     </footer>
