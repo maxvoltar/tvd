@@ -20,7 +20,7 @@ body > * {
 .hero {
   position: relative;
   background: #fff;
-  filter: blur(0.6px) contrast(4) url("#ink-bleed");
+  filter: blur(0.6px) contrast(5) url("#ink-bleed");
   will-change: transform;
 }
 .hero img {
