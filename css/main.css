@@ -168,7 +168,7 @@ header {
 header h1 {
   margin-top: -1.75rem;
   font-family: proxima-soft-extra-condensed, sans-serif;
-  font-size: calc((100vw - 5rem) / 5.4);
+  font-size: calc((100vw - 5rem) / 5.3);
   font-weight: 700;
   color: var(--background);
   text-align: center;
@@ -180,13 +180,13 @@ header h1 {
 @media (width <= 1024px) {
   header h1 {
     -webkit-text-stroke-width: 2px;
-    margin-top: -1rem;
+    margin-top: -1.25rem;
   }
 }
 @media (width <= 640px) {
   header h1 {
-    margin-top: 0;
-    font-size: calc((100vw - 2rem) / 5.6);
+    margin-top: -1rem;
+    font-size: calc((100vw - 2rem) / 5.3);
   }
 }
 
@@ -222,11 +222,6 @@ section::before {
   pointer-events: none;
   content: "";
   background-color: var(--text);
-}
-@media (width <= 640px) {
-  section {
-    padding: 1.5rem 0;
-  }
 }
 section:last-child {
   margin-bottom: 0;
@@ -269,6 +264,11 @@ section > :not(h2) {
   column-gap: 2.5rem;
 }
 @media (width > 640px) and (width <= 1024px) {
+  section > :not(h2) {
+    column-gap: 1.5rem;
+  }
+}
+@media (width > 640px) and (width <= 1024px) {
   section {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -279,6 +279,7 @@ section > :not(h2) {
 }
 @media (width <= 640px) {
   section {
+    padding: 1.5rem 0;
     grid-template-columns: 1fr;
   }
   section > :not(h2) {
@@ -315,6 +316,11 @@ section .timeline > li {
   align-items: start;
   padding: 1.5rem 0;
   border-top: 2px dotted var(--text);
+}
+@media (width > 640px) and (width <= 1024px) {
+  section .timeline > li {
+    column-gap: 1.5rem;
+  }
 }
 @media (width <= 640px) {
   section .timeline > li {
@@ -379,6 +385,11 @@ section .press li {
   column-gap: 2.5rem;
   align-items: start;
   margin-bottom: 0.75rem;
+}
+@media (width > 640px) and (width <= 1024px) {
+  section .press li {
+    column-gap: 1.5rem;
+  }
 }
 section .press li:last-child {
   margin-bottom: 0;
