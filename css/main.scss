@@ -86,10 +86,6 @@ img {
 hr {
   border: none;
   border-top: 2px dotted var(--text);
-
-  @include mobile {
-    display: none;
-  }
 }
 
 header,
@@ -99,11 +95,7 @@ body > footer {
 }
 
 .hero {
-  // Mask lives on .hero (same element as the newsprint filter).
-  mask-image: url("../img/mask.svg");
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: cover;
+  position: relative;
 
   img {
     width: 100%;
@@ -111,6 +103,31 @@ body > footer {
     object-fit: cover;
     object-position: center;
     filter: grayscale(1);
+  }
+
+  // Photo keeps the feather mask.
+  .hero-print {
+    mask-image: url("../img/mask.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+  }
+
+  // HTML wrapper gets the filter (same as type); SVG supplies the aka-colored shape.
+  .hero-drawing {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    color: var(--aka);
+    filter: url("#ink-bleed-drawing");
+    will-change: transform;
+  }
+
+  .hero-drawing-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
   }
 }
 
@@ -159,7 +176,7 @@ header {
     }
 
     @include mobile {
-      margin-top: -3.5rem;
+      margin-top: -2.5rem;
       margin-bottom: 0;
     }
   }
@@ -282,6 +299,11 @@ section {
     cite {
       display: block;
       margin-top: .75rem;
+    }
+
+    .ed {
+      font-variant: all-small-caps;
+      letter-spacing: 0.04em;
     }
 
     footer {

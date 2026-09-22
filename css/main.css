@@ -17,16 +17,16 @@ body > * {
   }
 }
 
-.hero {
+.hero-print {
   position: relative;
   background: #fff;
   filter: blur(0.6px) contrast(5) url("#ink-bleed");
   will-change: transform;
 }
-.hero img {
+.hero-print img {
   opacity: 0.52;
 }
-.hero::before {
+.hero-print::before {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -36,7 +36,7 @@ body > * {
   mix-blend-mode: multiply;
 }
 @media (width <= 640px) {
-  .hero::before {
+  .hero-print::before {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'%3E%3Cdefs%3E%3CradialGradient id='g' r='0.7071'%3E%3Cstop offset='0' stop-color='rgb(128,128,128)'/%3E%3Cstop offset='0.354' stop-color='rgb(140,140,140)'/%3E%3Cstop offset='0.53' stop-color='rgb(163,163,163)'/%3E%3Cstop offset='0.707' stop-color='rgb(209,209,209)'/%3E%3Cstop offset='0.85' stop-color='rgb(255,255,255)'/%3E%3Cstop offset='1' stop-color='rgb(255,255,255)'/%3E%3C/radialGradient%3E%3Cpattern id='p' width='2' height='2' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'%3E%3Crect width='2' height='2' fill='url(%23g)'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%' height='100%' fill='url(%23p)'/%3E%3C/svg%3E");
   }
 }
@@ -140,11 +140,6 @@ hr {
   border: none;
   border-top: 2px dotted var(--text);
 }
-@media (width <= 640px) {
-  hr {
-    display: none;
-  }
-}
 
 header,
 main,
@@ -153,10 +148,7 @@ body > footer {
 }
 
 .hero {
-  mask-image: url("../img/mask.svg");
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: cover;
+  position: relative;
 }
 .hero img {
   width: 100%;
@@ -164,6 +156,26 @@ body > footer {
   object-fit: cover;
   object-position: center;
   filter: grayscale(1);
+}
+.hero .hero-print {
+  mask-image: url("../img/mask.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: cover;
+}
+.hero .hero-drawing {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: var(--aka);
+  filter: url("#ink-bleed-drawing");
+  will-change: transform;
+}
+.hero .hero-drawing-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
 header {
@@ -212,7 +224,7 @@ header .aka {
 }
 @media (width <= 640px) {
   header .aka {
-    margin-top: -3.5rem;
+    margin-top: -2.5rem;
     margin-bottom: 0;
   }
 }
@@ -327,6 +339,10 @@ section .intro p {
 section .intro cite {
   display: block;
   margin-top: 0.75rem;
+}
+section .intro .ed {
+  font-variant: all-small-caps;
+  letter-spacing: 0.04em;
 }
 section .intro footer {
   margin-top: 0.5rem;

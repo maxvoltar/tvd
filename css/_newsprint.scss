@@ -110,10 +110,10 @@ $dot-profile: (0 0.5) (0.354 0.55) (0.53 0.64) (0.707 0.82) (0.85 1) (1 1);
   );
 }
 
-.hero {
+// Print stack only — kept off .hero so the red drawing overlay stays true aka.
+.hero-print {
   position: relative;
   background: #fff;
-
 
   // blur rounds the dots (ink surface tension); contrast pushes tones apart
   // into dots. 999 would be a hard threshold, pure ink or paper. A moderate
@@ -141,7 +141,6 @@ $dot-profile: (0 0.5) (0.354 0.55) (0.53 0.64) (0.707 0.82) (0.85 1) (1 1);
       background-image: ink-screen(#000, 45, $pitch-mobile);
     }
   }
-
 }
 
 // ---------------------------------------------------------------------------
