@@ -364,9 +364,13 @@ section {
         font-weight: 700;
       }
 
+      > p,
+      > ul {
+        font-size: 0.833em;
+      }
+
       ul {
         padding-left: 0;
-        font-size: 0.833em;
         list-style: none;
 
         li {

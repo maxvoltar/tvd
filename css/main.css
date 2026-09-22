@@ -394,9 +394,12 @@ section .timeline > li .role,
 section .timeline > li strong {
   font-weight: 700;
 }
+section .timeline > li > p,
+section .timeline > li > ul {
+  font-size: 0.833em;
+}
 section .timeline > li ul {
   padding-left: 0;
-  font-size: 0.833em;
   list-style: none;
 }
 section .timeline > li ul li {
