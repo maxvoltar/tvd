@@ -118,14 +118,6 @@ body > footer {
     margin: -1rem 1rem 1rem;
   }
 }
-body::after {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  content: "";
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1) 25vw, transparent 50vw);
-  mix-blend-mode: multiply;
-}
 
 a {
   position: relative;
