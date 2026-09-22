@@ -65,6 +65,9 @@ section::before {
   color-scheme: light dark;
   --background: light-dark(#fff, #000);
   --text: light-dark(#333, #ccc);
+  --aka-light: #c44536;
+  --aka-dark: #e87a6a;
+  --aka: light-dark(var(--aka-light), var(--aka-dark));
 }
 
 * {
@@ -100,6 +103,8 @@ body > footer {
   text-align: right;
   border-top: 2px solid var(--text);
   text-transform: uppercase;
+  font-family: felt-tip-roman, sans-serif;
+  color: var(--aka);
 }
 @media (width <= 1024px) {
   body > footer {
@@ -164,6 +169,7 @@ body > footer {
 header {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 header h1 {
   margin-top: -1.75rem;
@@ -187,6 +193,27 @@ header h1 {
   header h1 {
     margin-top: -1rem;
     font-size: calc((100vw - 2rem) / 5.3);
+  }
+}
+header .aka {
+  font-family: felt-tip-roman, sans-serif;
+  font-size: calc((100vw - 5rem) / 6);
+  color: var(--aka);
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: -7rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.2rem;
+}
+@media (width <= 1024px) {
+  header .aka {
+    margin-top: -5rem;
+  }
+}
+@media (width <= 640px) {
+  header .aka {
+    margin-top: -3.5rem;
+    margin-bottom: 0;
   }
 }
 
@@ -408,12 +435,12 @@ section .press cite::before {
     row-gap: 0.125rem;
   }
 }
-section .socials {
+section .links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-section .socials li:not(:last-child)::after {
+section .links li:not(:last-child)::after {
   margin-left: 0.5rem;
   content: "•";
 }

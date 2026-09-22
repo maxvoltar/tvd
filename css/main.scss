@@ -8,6 +8,10 @@
 
   --background: light-dark(#fff, #000);
   --text: light-dark(#333, #ccc);
+  // “MAX VOLTAR” ink — tweak light/dark independently.
+  --aka-light: #c44536;
+  --aka-dark: #e87a6a;
+  --aka: light-dark(var(--aka-light), var(--aka-dark));
 }
 
 * {
@@ -44,6 +48,8 @@ body {
     text-align: right;
     border-top: 2px solid var(--text);
     text-transform: uppercase;
+    font-family: felt-tip-roman, sans-serif;
+    color: var(--aka);
 
   @include until-desktop {
     padding-top: 1.5rem;
@@ -111,6 +117,7 @@ body > footer {
 header {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 
   h1 {
     margin-top: -1.75rem;
@@ -134,6 +141,26 @@ header {
     @include mobile {
       margin-top: -1rem;
       font-size: calc((100vw - 2rem) / 5.3);
+    }
+  }
+
+  .aka {
+    font-family: felt-tip-roman, sans-serif;
+    font-size: calc((100vw - 5rem) / 6);
+    color: var(--aka);
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: -7rem;
+    margin-bottom: 1rem;
+    letter-spacing: -.2rem;
+
+    @include until-desktop {
+      margin-top: -5rem;
+    }
+
+    @include mobile {
+      margin-top: -3.5rem;
+      margin-bottom: 0;
     }
   }
 }
@@ -387,7 +414,7 @@ section {
     }
   }
 
-  .socials {
+  .links {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
