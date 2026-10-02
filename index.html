@@ -7,10 +7,12 @@
     <meta name="author" content="Tim Van Damme" />
     <meta
       name="description"
-      content="Tim Van Damme (aka Max Voltar) is a product designer at Figma. He owns the icon system and helped shape UI3 — previously Abstract, Dropbox, Instagram, and Gowalla."
+      content="Tim Van Damme (Max Voltar), product designer at Figma. Owns the icon system and helped shape UI3. Previously Abstract, Dropbox, Instagram, and Gowalla."
     />
     <link rel="canonical" href="https://timvandamme.com/" />
     <meta name="theme-color" content="#303239" />
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" sizes="any" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tim Van Damme" />
@@ -22,7 +24,7 @@
     />
     <meta
       property="og:description"
-      content="Tim Van Damme (aka Max Voltar) is a product designer at Figma. He owns the icon system and helped shape UI3 — previously Abstract, Dropbox, Instagram, and Gowalla."
+      content="Tim Van Damme (Max Voltar), product designer at Figma. Owns the icon system and helped shape UI3. Previously Abstract, Dropbox, Instagram, and Gowalla."
     />
     <meta
       property="og:image"
@@ -45,7 +47,7 @@
     />
     <meta
       name="twitter:description"
-      content="Tim Van Damme (aka Max Voltar) is a product designer at Figma. He owns the icon system and helped shape UI3 — previously Abstract, Dropbox, Instagram, and Gowalla."
+      content="Tim Van Damme (Max Voltar), product designer at Figma. Owns the icon system and helped shape UI3. Previously Abstract, Dropbox, Instagram, and Gowalla."
     />
     <meta
       name="twitter:image"
@@ -65,6 +67,12 @@
         "url": "https://timvandamme.com/",
         "image": "https://timvandamme.com/img/cover.jpg",
         "jobTitle": "Product designer",
+        "email": "mailto:tim@maxvoltar.be",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "General inquiries",
+          "email": "tim@maxvoltar.be"
+        },
         "description": "Product designer at Figma. Owns the icon system and helped shape UI3.",
         "worksFor": {
           "@type": "Organization",
@@ -82,6 +90,31 @@
       }
     </script>
 
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://timvandamme.com/#website",
+            "name": "Tim Van Damme",
+            "url": "https://timvandamme.com/"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://timvandamme.com/#webpage",
+            "name": "Tim Van Damme (Max Voltar) — Product Designer at Figma",
+            "url": "https://timvandamme.com/",
+            "dateModified": "2026-10-02",
+            "isPartOf": {
+              "@id": "https://timvandamme.com/#website"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="stylesheet" href="https://use.typekit.net/pzo1zwb.css" />
     <link rel="stylesheet" href="css/main.css" media="screen" />
   </head>
@@ -120,12 +153,15 @@
 
     <figure class="hero">
       <div class="hero-print">
-        <img
-          src="img/cover.jpg"
-          width="2142"
-          height="1288"
-          alt="Tim Van Damme speaking at Figma Config 2025"
-        />
+        <picture>
+          <source srcset="img/cover.webp" type="image/webp" />
+          <img
+            src="img/cover.jpg"
+            width="2142"
+            height="1288"
+            alt="Tim Van Damme speaking at Figma Config 2025"
+          />
+        </picture>
       </div>
       <div class="hero-drawing" aria-hidden="true">
       <svg
